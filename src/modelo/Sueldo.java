@@ -5,10 +5,14 @@
 
 package modelo;
 
+import java.util.Calendar;
+
 /**
  *
  * @author HP
  */
 public class Sueldo {
+    private String idEmpleado;
+    private Calendar fecha;
 
 }
