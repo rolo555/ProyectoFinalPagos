@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import Datos.Sindicato;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,7 +16,6 @@ import java.util.Date;
 public class ControladorDePagos {
     private ArrayList<Empleado> empleadosFijos;
     private ArrayList<Empleado> empleadosPorHora;
-    private ArrayList<Comision> empleadosConComision;
     Sindicato sindicato = new Sindicato();
     public void pagarAEmpleadosFijos(Calendar fecha)
     {
@@ -39,7 +39,7 @@ public class ControladorDePagos {
             formaDePago.pagar(papeleta);
         }
     }
-     public void pagarComisiones(Calendar fecha)
+    /* public void pagarComisiones(Calendar fecha)
     {
         for (int i = 0; i < empleadosConComision.size(); i++) {
 
@@ -59,6 +59,6 @@ public class ControladorDePagos {
             FormaDePago formaDePago = FormaDePago.factoryformaDePago(formaDePagoString);
             formaDePago.pagar(papeleta);
         }
-    }
+    }*/
     
 }
