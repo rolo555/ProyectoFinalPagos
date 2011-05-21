@@ -1,5 +1,5 @@
 /*
- * VistaView.java
+ * MainView.java
  */
 
 package vista;
@@ -19,9 +19,11 @@ import javax.swing.JFrame;
 /**
  * The application's main frame.
  */
-public class VistaView extends FrameView {
+public class MainView extends FrameView {
 
-    public VistaView(SingleFrameApplication app) {
+    private EmpleadoPorHora empleadoPorHora;
+
+    public MainView(SingleFrameApplication app) {
         super(app);
 
         initComponents();
@@ -84,11 +86,11 @@ public class VistaView extends FrameView {
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
-            JFrame mainFrame = VistaApp.getApplication().getMainFrame();
-            aboutBox = new VistaAboutBox(mainFrame);
+            JFrame mainFrame = MainApp.getApplication().getMainFrame();
+            aboutBox = new MainAboutBox(mainFrame);
             aboutBox.setLocationRelativeTo(mainFrame);
         }
-        VistaApp.getApplication().show(aboutBox);
+        MainApp.getApplication().show(aboutBox);
     }
 
     /** This method is called from within the constructor to
@@ -101,6 +103,7 @@ public class VistaView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -118,26 +121,31 @@ public class VistaView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        jDesktopPane1.setName("jDesktopPane1"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 254, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.VistaApp.class).getContext().getResourceMap(VistaView.class);
-        fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
-        fileMenu.setName("fileMenu"); // NOI18N
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(MainView.class);
+        fileMenu.setText(resourceMap.getString("fileMenuEmpleado.text")); // NOI18N
+        fileMenu.setName("fileMenuEmpleado"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.VistaApp.class).getContext().getActionMap(VistaView.class, this);
-        exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
-        exitMenuItem.setName("exitMenuItem"); // NOI18N
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getActionMap(MainView.class, this);
+        exitMenuItem.setAction(actionMap.get("abrirEmpleadoPorHora")); // NOI18N
+        exitMenuItem.setText(resourceMap.getString("MenuItemEmpleadoPorHora.text")); // NOI18N
+        exitMenuItem.setName("MenuItemEmpleadoPorHora"); // NOI18N
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
@@ -212,7 +220,17 @@ public class VistaView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    @Action
+    public void abrirEmpleadoPorHora(){
+        if(empleadoPorHora == null){
+            empleadoPorHora = new EmpleadoPorHora();
+            jDesktopPane1.add(empleadoPorHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        }
+        empleadoPorHora.setVisible(true);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;

@@ -1,14 +1,14 @@
 /*
- * VistaAboutBox.java
+ * MainAboutBox.java
  */
 
 package vista;
 
 import org.jdesktop.application.Action;
 
-public class VistaAboutBox extends javax.swing.JDialog {
+public class MainAboutBox extends javax.swing.JDialog {
 
-    public VistaAboutBox(java.awt.Frame parent) {
+    public MainAboutBox(java.awt.Frame parent) {
         super(parent);
         initComponents();
         getRootPane().setDefaultButton(closeButton);
@@ -38,13 +38,13 @@ public class VistaAboutBox extends javax.swing.JDialog {
         javax.swing.JLabel imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.VistaApp.class).getContext().getResourceMap(VistaAboutBox.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(MainAboutBox.class);
         setTitle(resourceMap.getString("title")); // NOI18N
         setModal(true);
         setName("aboutBox"); // NOI18N
         setResizable(false);
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.VistaApp.class).getContext().getActionMap(VistaAboutBox.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getActionMap(MainAboutBox.class, this);
         closeButton.setAction(actionMap.get("closeAboutBox")); // NOI18N
         closeButton.setName("closeButton"); // NOI18N
 
