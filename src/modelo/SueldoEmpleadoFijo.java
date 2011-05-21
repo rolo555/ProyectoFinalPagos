@@ -5,10 +5,21 @@
 
 package modelo;
 
+import java.util.Calendar;
+
 /**
  *
  * @author HP
  */
 public class SueldoEmpleadoFijo extends Sueldo{
 
+    public SueldoEmpleadoFijo(String idEmpleado, double sueldoFijo, Calendar fecha)
+    {
+        this.idEmpleado = idEmpleado;
+        this.sueldoBruto = sueldoFijo;
+        this.fecha = fecha;
+    }
+    public double calcularSueldo() {
+       return sueldoBruto;
+    }
 }

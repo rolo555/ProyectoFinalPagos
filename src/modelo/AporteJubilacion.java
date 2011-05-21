@@ -11,4 +11,8 @@ package modelo;
  */
 public class AporteJubilacion extends SueldoDecorador{
 
+    public double calcularSueldo() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

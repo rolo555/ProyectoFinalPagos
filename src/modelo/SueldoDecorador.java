@@ -9,6 +9,7 @@ package modelo;
  *
  * @author HP
  */
-public class SueldoDecorador extends Sueldo{
+public abstract class SueldoDecorador extends Sueldo{
+    public abstract double calcularSueldo();
 
 }

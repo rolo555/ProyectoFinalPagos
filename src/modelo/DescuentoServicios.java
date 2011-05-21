@@ -5,11 +5,18 @@
 
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HP
  */
 public class DescuentoServicios extends SueldoDecorador{
+
+    ArrayList<Servicio> servicios;
+    public double calcularSueldo() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 
 }
