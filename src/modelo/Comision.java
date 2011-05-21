@@ -12,8 +12,9 @@ import java.util.Calendar;
  *
  * @author HP
  */
-public class Comision extends Empleado
+public class Comision
 {
+    private String idEmpleado;
     double porcentajeComision = 10;
     public Comision(String idEmpleado)
     {
@@ -33,8 +34,4 @@ public class Comision extends Empleado
         }
         return montoVentas*porcentajeComision/100;
     }
-    public double getSueldo(Calendar fecha) {
-        return getComision(fecha);
-    }
-
 }
