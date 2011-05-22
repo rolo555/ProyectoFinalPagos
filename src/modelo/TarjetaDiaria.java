@@ -24,12 +24,18 @@ public class TarjetaDiaria {
     
     public int getHorasExtras()
     {
-        int hora = this.fecha.get(Calendar.HOUR_OF_DAY);
-        int horafinal = hora+ this.horasTrabajadas;
-        if (horasTrabajadas>8) {
-            return horasTrabajadas-8;
+        int horaInicio = this.fecha.get(Calendar.HOUR_OF_DAY);
+        int horaFinal = horaInicio+ this.horasTrabajadas;
+        if (horaInicio>=19) {
+            return horasTrabajadas;
+        }else
+        {
+            if (horaFinal > 19) {
+                return horaFinal - 19;
+            }else{
+                return 0;
+            }
         }
-        return 0;
     }
 
     public int getHorasTrabajadas() {

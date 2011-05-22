@@ -25,7 +25,6 @@ public class EmpleadoFijo extends Empleado{
         double comisionTotal =  comision.getComision(fechaFin);
         return 0.0;
     }
-
 }
 
 

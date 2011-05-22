@@ -22,6 +22,7 @@ public class Comision
     }
     public ArrayList<Venta> getVentas(Calendar fecha)
     {
+
         ArrayList<Venta> ventas = null;
         //LLamar a datos
         return ventas;
@@ -34,4 +35,5 @@ public class Comision
         }
         return montoVentas*porcentajeComision/100;
     }
+
 }

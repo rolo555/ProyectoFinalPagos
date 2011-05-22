@@ -11,8 +11,10 @@ import java.util.Calendar;
  *
  * @author HP
  */
-public class Sueldo {
-    private String idEmpleado;
-    private Calendar fecha;
-
+public abstract class Sueldo {
+    protected String idEmpleado;
+    protected Calendar fecha;
+    protected double sueldoLiquido;
+    protected double sueldoBruto;
+    public abstract double calcularSueldo();
 }
