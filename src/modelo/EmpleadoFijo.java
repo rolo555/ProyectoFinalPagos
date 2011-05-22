@@ -12,9 +12,20 @@ import java.util.Calendar;
  * @author HP
  */
 public class EmpleadoFijo extends Empleado{
+    private boolean TieneComision;
+    private Sueldo sueldo;
+    Comision comision;
 
-    public double getSueldo(Calendar fecha){
-        return this.sueldoFijo;
+    public EmpleadoFijo(){
+        TieneComision=false;
+        sueldo=new SueldoEmpleadoFijo();
+    }
+
+    public double calcularSueldo(Calendar fechaInicio,Calendar fechaFin){
+        double comisionTotal =  comision.getComision(fechaFin);
+        return 0.0;
     }
 
 }
+
+

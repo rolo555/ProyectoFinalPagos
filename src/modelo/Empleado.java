@@ -41,7 +41,7 @@ public abstract class Empleado {
     String getIdEmpleado() {
         return idEmpleado;
     }
-    public abstract double getSueldo(Calendar fecha);
+    public abstract double calcularSueldo(Calendar fechainicio, Calendar fechaFin);
 
     String getFormaDePago() {
         return formaDePago;
