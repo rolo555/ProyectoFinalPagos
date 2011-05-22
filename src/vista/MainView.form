@@ -11,14 +11,28 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+              <Component id="jDesktopPane1" alignment="0" pref="400" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <EmptySpace min="0" pref="254" max="32767" attributes="0"/>
+              <Component id="jDesktopPane1" alignment="0" pref="254" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jDesktopPane1" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
+        </Container>
+      </SubComponents>
     </Container>
     <Container class="javax.swing.JMenuBar" name="menuBar">
       <Properties>
@@ -31,8 +45,8 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="fileMenu.text"/>
-            <Property name="name" type="java.lang.String" value="fileMenu" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="fileMenuEmpleado.text"/>
+            <Property name="name" type="java.lang.String" value="fileMenuEmpleado" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -42,9 +56,10 @@
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="org.jdesktop.application.Application" id="quit" methodName="quit"/>
+                  <action class="vista.MainView" id="abrirEmpleadoPorHora" methodName="abrirEmpleadoPorHora"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="exitMenuItem" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="MenuItemEmpleadoPorHora.text"/>
+                <Property name="name" type="java.lang.String" value="MenuItemEmpleadoPorHora" noResource="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>

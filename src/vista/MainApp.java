@@ -1,5 +1,5 @@
 /*
- * VistaApp.java
+ * MainApp.java
  */
 
 package vista;
@@ -10,13 +10,13 @@ import org.jdesktop.application.SingleFrameApplication;
 /**
  * The main class of the application.
  */
-public class VistaApp extends SingleFrameApplication {
+public class MainApp extends SingleFrameApplication {
 
     /**
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new VistaView(this));
+        show(new MainView(this));
     }
 
     /**
@@ -29,16 +29,16 @@ public class VistaApp extends SingleFrameApplication {
 
     /**
      * A convenient static getter for the application instance.
-     * @return the instance of VistaApp
+     * @return the instance of MainApp
      */
-    public static VistaApp getApplication() {
-        return Application.getInstance(VistaApp.class);
+    public static MainApp getApplication() {
+        return Application.getInstance(MainApp.class);
     }
 
     /**
      * Main method launching the application.
      */
     public static void main(String[] args) {
-        launch(VistaApp.class, args);
+        launch(MainApp.class, args);
     }
 }
