@@ -1,4 +1,4 @@
 src/pagos/resources/*
-nbproject/private/*
 build/classes/*
 *.bak
+nbproject/private/*
