@@ -23,7 +23,12 @@ public class SueldoEmpleadoPorHora extends Sueldo{
         this.tarjetas = tarjetas;
     }
     public double calcularSueldo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        double sueldo = 0;
+        for (int i = 0; i < tarjetas.size(); i++) {
+            sueldo += tarjetas.get(i).getHorasTrabajadas()*this.sueldoPorHora;
+            sueldo += tarjetas.get(i).getHorasExtras()*1.5/100;
+        }
+        return sueldo;
     }
 
 }

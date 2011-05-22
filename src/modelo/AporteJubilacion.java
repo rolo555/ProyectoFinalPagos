@@ -10,9 +10,15 @@ package modelo;
  * @author HP
  */
 public class AporteJubilacion extends SueldoDecorador{
+    private double aporte;
+    public AporteJubilacion(double aporte, Sueldo sueldoDecorado)
+    {
 
+        this.aporte = aporte;
+        this.sueldoDecorado = sueldoDecorado;
+    }
     public double calcularSueldo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.sueldoDecorado.calcularSueldo() - aporte;
     }
 
 }

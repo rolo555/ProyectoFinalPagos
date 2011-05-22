@@ -19,6 +19,10 @@ public class SueldoEmpleadoFijo extends Sueldo{
         this.sueldoBruto = sueldoFijo;
         this.fecha = fecha;
     }
+    public double getSueldoBruto()
+    {
+        return sueldoBruto;
+    }
     public double calcularSueldo() {
        return sueldoBruto;
     }

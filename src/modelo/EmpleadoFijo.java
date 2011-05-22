@@ -16,5 +16,4 @@ public class EmpleadoFijo extends Empleado{
     public double getSueldo(Calendar fecha){
         return this.sueldoFijo;
     }
-
 }
