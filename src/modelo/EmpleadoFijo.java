@@ -20,11 +20,6 @@ public class EmpleadoFijo extends Empleado {
         TieneComision = false;
     }
 
-    public double calcularSueldo(Calendar fechaInicio, Calendar fechaFin) {
-        double comisionTotal = comision.getComision(fechaFin);
-        return 0.0;
-    }
-
     public double getSueldo(Calendar fechaInicio, Calendar fechaFin) {
         return this.sueldoFijo;
     }
