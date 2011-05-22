@@ -13,39 +13,21 @@ import java.util.Calendar;
  */
 public class PapeletaDePago {
     String idEmpleado;
-    Calendar fecha;
+    Calendar fechaInicio;
+    Calendar fechaFin;
+    double sueldoBruto;
     double sueldoLiquido;
-    double montoPagado;
     double AporteJubilacion;
-    double comisionPorVentas;
-    double descuentoPorCargosAlSindicato;
-    public PapeletaDePago( String idEmpleado, Calendar fecha, double sueldoLiquido, double montoPagado, double jubilacion, double comisionPorVentas, double descuento)
+    double descuentoPorServicios;
+    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoLiquido, double montoPagado, double jubilacion, double comisionPorVentas, double descuento)
     {
         this.idEmpleado = idEmpleado;
-        this.fecha = fecha;
-        this.sueldoLiquido= sueldoLiquido;
-        this.montoPagado = montoPagado;
+        this.fechaInicio = fechaIni;
+        this.fechaFin = fechaFin;
+        this.sueldoBruto= sueldoLiquido;
+        this.sueldoLiquido = montoPagado;
         this.AporteJubilacion = jubilacion;
-        this.descuentoPorCargosAlSindicato = descuento;
-        this.comisionPorVentas = comisionPorVentas;
-    }
-    public PapeletaDePago( String idEmpleado, Calendar fecha, double sueldoLiquido, double montoPagado)
-    {
-        this.idEmpleado = idEmpleado;
-        this.fecha = fecha;
-        this.sueldoLiquido= sueldoLiquido;
-        this.montoPagado = montoPagado;
-    }
-    public PapeletaDePago( String idEmpleado, Calendar fecha, double sueldoLiquido)
-    {
-        this.idEmpleado = idEmpleado;
-        this.fecha = fecha;
-        this.sueldoLiquido= sueldoLiquido;
-        this.montoPagado = sueldoLiquido;
-    }
-
-    public PapeletaDePago(String idEmpleado, Calendar fecha, double sueldo, double montoPagado, double aporte, double cargos) {
-
+        this.descuentoPorServicios = descuento;
     }
     public void enviarPorCorreo(String correo)
     {
