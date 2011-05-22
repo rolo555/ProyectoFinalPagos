@@ -27,7 +27,7 @@ public class Venta{
     {
         return this.fecha;
     }
-    public double getSueldo()
+    public double getMonto()
     {
         return this.monto;
     }

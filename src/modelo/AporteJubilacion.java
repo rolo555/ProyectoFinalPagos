@@ -13,7 +13,6 @@ public class AporteJubilacion extends SueldoDecorador{
     private double aporte;
     public AporteJubilacion(double aporte, Sueldo sueldoDecorado)
     {
-
         this.aporte = aporte;
         this.sueldoDecorado = sueldoDecorado;
     }
