@@ -26,7 +26,7 @@ public class DescuentoServicios extends SueldoDecorador{
         for (int i = 0; i < servicios.size(); i++) {
             descuento += servicios.get(i).getMonto();
         }
-        return 0.0;
+        return descuento;
     }
     public double calcularSueldo() {
         return sueldoDecorado.calcularSueldo()- descuentoPorServicios;
