@@ -21,7 +21,8 @@ import javax.swing.JFrame;
  */
 public class MainView extends FrameView {
 
-    private EmpleadoPorHora empleadoPorHora;
+    private RegistrarEmpleado empleadoPorHora;
+    private MaquinaDelTiempo maquinaDelTiempo;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -107,12 +108,10 @@ public class MainView extends FrameView {
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
-        javax.swing.JMenu helpMenu = new javax.swing.JMenu();
-        javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        javax.swing.JMenu helpMenu = new javax.swing.JMenu();
+        javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
         javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
         statusMessageLabel = new javax.swing.JLabel();
@@ -127,12 +126,10 @@ public class MainView extends FrameView {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
             .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
             .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
 
@@ -144,11 +141,21 @@ public class MainView extends FrameView {
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getActionMap(MainView.class, this);
         exitMenuItem.setAction(actionMap.get("abrirEmpleadoPorHora")); // NOI18N
-        exitMenuItem.setText(resourceMap.getString("MenuItemEmpleadoPorHora.text")); // NOI18N
-        exitMenuItem.setName("MenuItemEmpleadoPorHora"); // NOI18N
+        exitMenuItem.setText(resourceMap.getString("MenuItemRegistrarEmpleado.text")); // NOI18N
+        exitMenuItem.setName("MenuItemRegistrarEmpleado"); // NOI18N
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
+
+        jMenu1.setText(resourceMap.getString("jMenuMaquinaDelTiempo.text")); // NOI18N
+        jMenu1.setName("jMenuMaquinaDelTiempo"); // NOI18N
+
+        jMenuItem1.setAction(actionMap.get("abrirMaquinaDelTiempo")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItemAbrirMaquinaDelTiempo.text")); // NOI18N
+        jMenuItem1.setName("jMenuItemAbrirMaquinaDelTiempo"); // NOI18N
+        jMenu1.add(jMenuItem1);
+
+        menuBar.add(jMenu1);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
@@ -158,25 +165,6 @@ public class MainView extends FrameView {
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
-
-        jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
-        jMenu1.setName("jMenu1"); // NOI18N
-
-        jMenuItem1.setAction(actionMap.get("showAboutBox")); // NOI18N
-        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
-        jMenuItem1.setName("jMenuItem1"); // NOI18N
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setAction(actionMap.get("quit")); // NOI18N
-        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
-        jMenuItem2.setName("jMenuItem2"); // NOI18N
-        jMenu1.add(jMenuItem2);
-
-        menuBar.add(jMenu1);
-
-        jMenu2.setText(resourceMap.getString("jMenu2.text")); // NOI18N
-        jMenu2.setName("jMenu2"); // NOI18N
-        menuBar.add(jMenu2);
 
         statusPanel.setName("statusPanel"); // NOI18N
 
@@ -223,18 +211,25 @@ public class MainView extends FrameView {
     @Action
     public void abrirEmpleadoPorHora(){
         if(empleadoPorHora == null){
-            empleadoPorHora = new EmpleadoPorHora();
+            empleadoPorHora = new RegistrarEmpleado();
             jDesktopPane1.add(empleadoPorHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
         empleadoPorHora.setVisible(true);
     }
 
+    @Action
+    public void abrirMaquinaDelTiempo(){
+        if(maquinaDelTiempo == null){
+            maquinaDelTiempo = new MaquinaDelTiempo();
+            jDesktopPane1.add(maquinaDelTiempo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        }
+        maquinaDelTiempo.setVisible(true);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
