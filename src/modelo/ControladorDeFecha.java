@@ -55,5 +55,15 @@ public class ControladorDeFecha {
             this.contadorDeViernes++;
         }
     }
- 
+   /*  public boolean esViernesPar() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(fechaActual.YEAR, 0, 1);//revisar metodo raro
+        int ultimoDia = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+        cal.set(Calendar.DAY_OF_MONTH, ultimoDia);
+         for (int i = 0; cal.before(fechaActual); i++) {
+             cal.add(Calendar.DAY, i);
+         }
+        return  true;
+    }
+ */
 }
