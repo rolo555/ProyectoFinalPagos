@@ -28,5 +28,4 @@ public class Sindicato {
         }
         return cargos;
     }
-
 }

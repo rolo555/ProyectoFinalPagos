@@ -19,15 +19,23 @@ public class PapeletaDePago {
     double sueldoLiquido;
     double AporteJubilacion;
     double descuentoPorServicios;
-    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoLiquido, double montoPagado, double jubilacion, double comisionPorVentas, double descuento)
+    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto, double jubilacion, double descuento)
     {
         this.idEmpleado = idEmpleado;
         this.fechaInicio = fechaIni;
         this.fechaFin = fechaFin;
-        this.sueldoBruto= sueldoLiquido;
-        this.sueldoLiquido = montoPagado;
+        this.sueldoBruto = sueldoBruto;
         this.AporteJubilacion = jubilacion;
         this.descuentoPorServicios = descuento;
+        this.sueldoLiquido = sueldoBruto-jubilacion-descuentoPorServicios;
+    }
+    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto)
+    {
+        this.idEmpleado = idEmpleado;
+        this.fechaInicio = fechaIni;
+        this.fechaFin = fechaFin;
+        this.sueldoBruto = sueldoBruto;
+        this.sueldoLiquido = sueldoBruto;
     }
     public void enviarPorCorreo(String correo)
     {
