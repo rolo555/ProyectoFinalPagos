@@ -13,7 +13,14 @@ import java.util.Date;
  * @author HP
  */
 public class EmpleadoPorHoras extends Empleado{
+    private ArrayList<TarjetaDiaria> tarjetas = new ArrayList<TarjetaDiaria>();
 
+    public ArrayList<TarjetaDiaria> tarjetasEnMes(Calendar inicio, Calendar Fin){
+        for(TarjetaDiaria tarjeta: tarjetas){
+
+        }
+        return tarjetas;
+    }
 
     public void llenarTarjetaDiaria(Calendar fecha, int cantidadHoras)
     {
@@ -35,6 +42,5 @@ public class EmpleadoPorHoras extends Empleado{
         }
         return sueldo;
     }
-
 
 }

@@ -42,6 +42,10 @@ public class TarjetaDiaria {
         return horasTrabajadas;
     }
 
+    public Calendar getFecha(){
+        return fecha;
+    }
+
     void guardar() {
         //llamar a datos
     }
