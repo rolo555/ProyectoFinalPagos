@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.Calendar;
+
 /**
  *
  * @author HP
@@ -12,12 +14,14 @@ public class Servicio {
     private String idEmpleado;
     private String descripcionServicio;
     private Double monto;
+    private Calendar fecha;
     
-   public Servicio(String idEmpleado, String descripcion, Double monto)
+   public Servicio(String idEmpleado, String descripcion, Double monto, Calendar fecha)
    {
        this.idEmpleado = idEmpleado;
        this.descripcionServicio = descripcion;
        this.monto = monto;
+       this.fecha = fecha;
    }
    public void guardar()
    {
@@ -26,9 +30,5 @@ public class Servicio {
    public Double getMonto()
    {
        return this.monto;
-   }
-   public boolean usadoPor(String idEmpleado)
-   {
-       return this.idEmpleado==idEmpleado;
    }
 }

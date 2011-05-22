@@ -12,16 +12,16 @@ import java.util.Calendar;
  * @author HP
  */
 public abstract class Empleado {
+
     protected String idEmpleado;
     protected String nombreCompleto;
     protected int telefono;
     protected String direccion;
-    protected double aporteJubilacion=-1;
+    protected double aporteJubilacion = -1;
     protected double sueldoFijo;
     protected String formaDePago;
 
-    public void setArgumentosDeEmpleado(String idEmpleado, String nombreCompleto, int telefono,String direccion, double sueldoFijo, String formaDePago )
-    {
+    public void setArgumentosDeEmpleado(String idEmpleado, String nombreCompleto, int telefono, String direccion, double sueldoFijo, String formaDePago) {
         this.idEmpleado = idEmpleado;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
@@ -29,8 +29,8 @@ public abstract class Empleado {
         this.sueldoFijo = sueldoFijo;
         this.formaDePago = formaDePago;
     }
-    public void agregarAlSindicato(double aporteJubilacion)
-    {
+
+    public void agregarAlSindicato(double aporteJubilacion) {
         this.aporteJubilacion = aporteJubilacion;
     }
 
@@ -41,18 +41,18 @@ public abstract class Empleado {
     String getIdEmpleado() {
         return idEmpleado;
     }
-    public abstract double getSueldo(Calendar fecha);
+
+    public abstract double getSueldo(Calendar fechaInicio, Calendar fechaFin);
 
     String getFormaDePago() {
         return formaDePago;
     }
 
     boolean perteneceAlSindicato() {
-        return aporteJubilacion==-1;
+        return aporteJubilacion == -1;
     }
 
     double getAporteJubilacion() {
-       return aporteJubilacion;
+        return aporteJubilacion;
     }
-
 }

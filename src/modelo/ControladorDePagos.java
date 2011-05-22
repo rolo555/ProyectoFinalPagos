@@ -4,7 +4,6 @@
  */
 package modelo;
 
-import Datos.Sindicato;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,51 +13,66 @@ import java.util.Date;
  * @author HP
  */
 public class ControladorDePagos {
-    private ArrayList<Empleado> empleadosFijos;
-    private ArrayList<Empleado> empleadosPorHora;
     Sindicato sindicato = new Sindicato();
-    public void pagarAEmpleadosFijos(Calendar fecha)
-    {
-        for (int i = 0; i < empleadosFijos.size(); i++) {
+    public ArrayList<Empleado> getEmpleadosFijos(){
+        ArrayList<Empleado> empleadosFijos = new ArrayList<Empleado>();
+        //consultar a dal
+        return empleadosFijos;
+    }
 
-            Empleado empleado = empleadosFijos.get(i);
+    private ArrayList<Empleado> getEmpleadosPorHora() {
+         ArrayList<Empleado> empleadosPorHora = new ArrayList<Empleado>();
+       //consultar a dal
+         return empleadosPorHora;
+    }
+
+    private ArrayList<EmpleadoFijo> getEmpleadosConComision() {
+       ArrayList<EmpleadoFijo> empleadosConComision = new ArrayList<EmpleadoFijo>();
+       //consultar a dal
+       return empleadosConComision;
+    }
+    public void pagarFijos(Calendar fechaInicio, Calendar fechaFin)
+    {
+        ArrayList<Empleado> empleadosFijos = getEmpleadosFijos();
+        pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
+    }
+    public void pagarEmpleadosPorHora(Calendar fechaInicio, Calendar fechaFin)
+    {
+        ArrayList<Empleado> empleadosFijos = getEmpleadosPorHora();
+        pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
+    }
+    public void pagarAEmpleados(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
+    {
+        for (int i = 0; i < empleados.size(); i++) {
             PapeletaDePago papeleta;
-            double sueldo = empleado.getSueldo(fecha);
-            if (empleado.perteneceAlSindicato()) {
-                double cargos = sindicato.getCargosPorServicios(empleado.getIdEmpleado());
-                double aporte = empleado.getAporteJubilacion();
-                double montoPagado = sueldo - aporte - cargos;
-                papeleta = new PapeletaDePago(empleado.getIdEmpleado(), fecha, sueldo, montoPagado, aporte, cargos);
+            Empleado empleadoAux=empleados.get(i);
+            double sueldoBruto = empleadoAux.getSueldo(fechaInicio, fechaFin);
+            if (empleadoAux.perteneceAlSindicato()) {
+                double aporte = empleadoAux.getAporteJubilacion();
+                double cargosPorServicio = sindicato.getCargosPorServicios(empleadoAux.getIdEmpleado());
+                papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto, aporte, cargosPorServicio);
             }
             else
             {
-                papeleta = new PapeletaDePago(empleado.getIdEmpleado(), fecha, sueldo);
+                papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
             }
-            String formaDePagoString = empleado.getFormaDePago();
-            FormaDePago formaDePago = FormaDePago.factoryformaDePago(formaDePagoString);
+            FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
             formaDePago.pagar(papeleta);
         }
     }
-    /* public void pagarComisiones(Calendar fecha)
+    public void pagarComisiones(Calendar fechaInicio, Calendar fechaFin)
     {
-        for (int i = 0; i < empleadosConComision.size(); i++) {
-
-            Empleado empleado = empleadosConComision.get(i);
+        ArrayList<EmpleadoFijo> empleados = getEmpleadosConComision();
+         for (int i = 0; i < empleados.size(); i++) {
             PapeletaDePago papeleta;
-            double sueldo = empleado.getSueldo(fecha);
-            if (empleado.perteneceAlSindicato()) {
-                double aporte = sindicato.getCargosPorServicios(empleado.getIdEmpleado());
-                double montoPagado = sueldo - aporte;
-                papeleta = new PapeletaDePago(empleado.getIdEmpleado(), fecha, sueldo, montoPagado);
-            }
-            else
+            EmpleadoFijo empleadoAux = empleados.get(i);
+            Comision comisionEmpleadoAux = new Comision(empleadoAux.getIdEmpleado(), empleadoAux.getPorcentajeComision());
+            double sueldoBruto = comisionEmpleadoAux.getComision(fechaInicio, fechaFin);
             {
-                papeleta = new PapeletaDePago(empleado.getIdEmpleado(), fecha, sueldo);
+                papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
             }
-            String formaDePagoString = empleado.getFormaDePago();
-            FormaDePago formaDePago = FormaDePago.factoryformaDePago(formaDePagoString);
+            FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
             formaDePago.pagar(papeleta);
         }
-    }*/
-    
+    }
 }

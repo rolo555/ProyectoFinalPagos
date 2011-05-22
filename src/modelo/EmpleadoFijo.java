@@ -11,10 +11,23 @@ import java.util.Calendar;
  *
  * @author HP
  */
-public class EmpleadoFijo extends Empleado{
+public class EmpleadoFijo extends Empleado {
 
-    public double getSueldo(Calendar fecha){
+    private double porcentajeComision = -1;
+    Comision comision;
+
+    public EmpleadoFijo() {
+        
+    }
+    public boolean tieneComision()
+    {
+        return porcentajeComision!=-1;
+    }
+    public double getPorcentajeComision()
+    {
+        return porcentajeComision;
+    }
+    public double getSueldo(Calendar fechaInicio, Calendar fechaFin) {
         return this.sueldoFijo;
     }
-
 }

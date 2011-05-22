@@ -13,25 +13,23 @@ import java.util.GregorianCalendar;
  */
 public class ControladorDeFecha {
     private Calendar fechaActual;
-    private int contadorDeViernes;
-
     public ControladorDeFecha(int dia, int mes, int anio)
     {
        this.fechaActual = Calendar.getInstance();
        fechaActual.set(anio,mes,dia);
     }
     
+    public void setFecha(int dia, int mes, int anio)
+    {
+       fechaActual.set(anio,mes,dia);
+    }
+
     public boolean esViernes()
     {
         int dia = fechaActual.get(Calendar.DAY_OF_WEEK);
         return dia==5;
     }
-    
-    public void incrementarContadorDeViernes()
-    {
-        this.contadorDeViernes+= 1;
-    }
-    
+
     public int getUltimoDiaHabilDelMes() {
         Calendar cal = fechaActual;//revisar metodo raro
         int ultimoDia = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
@@ -49,11 +47,20 @@ public class ControladorDeFecha {
     }
     public void incrementarFecha()
     {
-        this.fechaActual.add(Calendar.DAY_OF_MONTH, 1);
         this.fechaActual.roll(Calendar.DAY_OF_MONTH,true);
-        if (fechaActual.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-            this.contadorDeViernes++;
-        }
     }
- 
+    public boolean esViernesPar() {
+        int contadorViernes = 0;
+        Calendar cal = Calendar.getInstance();
+        cal.set(fechaActual.get(Calendar.YEAR), 0, 1);//revisar metodo raro
+        int ultimoDia = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+        cal.set(Calendar.DAY_OF_MONTH, ultimoDia);
+         for (int i = 0; cal.before(fechaActual); i++) {
+             cal.add(Calendar.DAY_OF_MONTH, 1);
+             if (cal.get(Calendar.DAY_OF_WEEK) == 5) {
+                 contadorViernes++;
+             }
+         }
+        return  contadorViernes%2 == 0;
+    }
 }
