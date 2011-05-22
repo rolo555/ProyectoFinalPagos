@@ -14,28 +14,34 @@ import java.util.Date;
  */
 public class ControladorDePagos {
     Sindicato sindicato = new Sindicato();
-    public ArrayList<Empleado> getEmpleadosFijos()
-    {
+    public ArrayList<Empleado> getEmpleadosFijos(){
         ArrayList<Empleado> empleadosFijos = new ArrayList<Empleado>();
         //consultar a dal
         return empleadosFijos;
     }
+
     private ArrayList<Empleado> getEmpleadosPorHora() {
          ArrayList<Empleado> empleadosPorHora = new ArrayList<Empleado>();
        //consultar a dal
          return empleadosPorHora;
     }
+
+    private ArrayList<EmpleadoFijo> getEmpleadosConComision() {
+       ArrayList<EmpleadoFijo> empleadosConComision = new ArrayList<EmpleadoFijo>();
+       //consultar a dal
+       return empleadosConComision;
+    }
     public void pagarFijos(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<Empleado> empleadosFijos = getEmpleadosFijos();
-        pagarAEmpleadosFijos(fechaInicio, fechaFin, empleadosFijos);
+        pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
     }
     public void pagarEmpleadosPorHora(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<Empleado> empleadosFijos = getEmpleadosPorHora();
-        pagarAEmpleadosFijos(fechaInicio, fechaFin, empleadosFijos);
+        pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
     }
-    public void pagarAEmpleadosFijos(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
+    public void pagarAEmpleados(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
     {
         for (int i = 0; i < empleados.size(); i++) {
             PapeletaDePago papeleta;
@@ -54,5 +60,19 @@ public class ControladorDePagos {
             formaDePago.pagar(papeleta);
         }
     }
-
+    public void pagarComisiones(Calendar fechaInicio, Calendar fechaFin)
+    {
+        ArrayList<EmpleadoFijo> empleados = getEmpleadosConComision();
+         for (int i = 0; i < empleados.size(); i++) {
+            PapeletaDePago papeleta;
+            EmpleadoFijo empleadoAux = empleados.get(i);
+            Comision comisionEmpleadoAux = new Comision(empleadoAux.getIdEmpleado(), empleadoAux.getPorcentajeComision());
+            double sueldoBruto = comisionEmpleadoAux.getComision(fechaInicio, fechaFin);
+            {
+                papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
+            }
+            FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
+            formaDePago.pagar(papeleta);
+        }
+    }
 }
