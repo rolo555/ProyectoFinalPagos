@@ -13,7 +13,7 @@ import java.util.Calendar;
  */
 public class EmpleadoFijo extends Empleado{
 
-    public double getSueldo(Calendar fecha){
+    public double getSueldo(Calendar fechaInicio, Calendar fechaFin){
         return this.sueldoFijo;
     }
 }

@@ -37,11 +37,10 @@ public abstract class Empleado {
     public Double getSueldoFijo() {
         return this.sueldoFijo;
     }
-
     String getIdEmpleado() {
         return idEmpleado;
     }
-    public abstract double getSueldo(Calendar fecha);
+    public abstract double getSueldo(Calendar fechaInicio, Calendar fechaFin);
 
     String getFormaDePago() {
         return formaDePago;
