@@ -13,13 +13,20 @@ import java.util.Calendar;
  */
 public class EmpleadoFijo extends Empleado {
 
-    private boolean TieneComision;
+    private double porcentajeComision = -1;
     Comision comision;
 
     public EmpleadoFijo() {
-        TieneComision = false;
+        
     }
-
+    public boolean tieneComision()
+    {
+        return porcentajeComision!=-1;
+    }
+    public double getPorcentajeComision()
+    {
+        return porcentajeComision;
+    }
     public double getSueldo(Calendar fechaInicio, Calendar fechaFin) {
         return this.sueldoFijo;
     }
