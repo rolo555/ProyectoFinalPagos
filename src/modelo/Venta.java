@@ -12,11 +12,11 @@ import java.util.Calendar;
  */
 public class Venta{
 
-    String idEmpleado;
+    int idEmpleado;
     Calendar fecha;
     double monto;
     
-    public Venta(Calendar fecha, double monto, String idEmpleado)
+    public Venta(Calendar fecha, double monto, int idEmpleado)
     {
         this.fecha = fecha;
         this.monto = monto;
@@ -30,5 +30,9 @@ public class Venta{
     public double getMonto()
     {
         return this.monto;
+    }
+
+    public String getIdEmpleado() {
+        return this.getIdEmpleado();
     }
 }

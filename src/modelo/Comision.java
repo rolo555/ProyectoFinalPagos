@@ -5,6 +5,7 @@
 
 package modelo;
 
+import Datos.VentasDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -23,8 +24,7 @@ public class Comision
     }
     public ArrayList<Venta> getVentas(Calendar fechaInicio, Calendar fechaFin)
     {
-        ArrayList<Venta> ventas = null;
-        //LLamar a datos
+        ArrayList<Venta> ventas = VentasDBHelper.getVentas(fechaInicio, fechaFin);
         return ventas;
     }
     public double getComision(Calendar fechaInicio, Calendar fechaFin) {

@@ -28,6 +28,7 @@ public class EmpleadoPorHoras extends Empleado{
         TarjetaDiaria tarjeta = new TarjetaDiaria(this.idEmpleado, fecha, cantidadHoras);
         tarjeta.guardar();
     }
+
     public ArrayList<TarjetaDiaria> getTarjetas(Calendar fechaInicio, Calendar fechaFin){
         ArrayList<TarjetaDiaria> tarjetasMes = new ArrayList<TarjetaDiaria>();
         for(TarjetaDiaria tarjeta: tarjetas){
@@ -36,15 +37,14 @@ public class EmpleadoPorHoras extends Empleado{
             }
         }
         return tarjetasMes;
-
-        }
+    }
 
     public double getSueldo(Calendar fechaInicio, Calendar fechaFin) {
         double sueldo = 0;
         ArrayList<TarjetaDiaria> tarjetasPorMes = getTarjetas(fechaInicio, fechaFin);
         for (int i = 0; i < tarjetasPorMes.size(); i++) {
             sueldo += tarjetasPorMes.get(i).getHorasTrabajadas()*this.sueldoFijo;
-            sueldo += tarjetasPorMes.get(i).getHorasExtras()*1.5/100;
+            sueldo += tarjetasPorMes.get(i).getHorasExtras()*(1.5/100*this.sueldoFijo);
         }
         return sueldo;
     }
