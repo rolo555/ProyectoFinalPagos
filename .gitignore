@@ -2,3 +2,4 @@ src/pagos/resources/*
 build/classes/*
 *.bak
 nbproject/private/*
+nbproject/private/private.properties

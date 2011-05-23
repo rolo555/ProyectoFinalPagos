@@ -27,7 +27,7 @@ public class FechaDelSistema {
                 fecha.set(rs.getInt("anio"), rs.getInt("mes"), rs.getInt("dia"));
             } else {
                 fecha.set(2000, 1, 1);
-                SqlConnection.ejecutar("INSERT INTO fecha_del_sistema (id, dia, mes, anio) VALUES ('1','2','1','2000')");
+                SqlConnection.ejecutar("INSERT INTO fecha_del_sistema (id, dia, mes, anio) VALUES ('1','1','1','2000')");
             }
             SqlConnection.desconectar();
         } catch (Exception e) {
