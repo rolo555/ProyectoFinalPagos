@@ -406,12 +406,13 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         String tipoEmpleado= jComboBoxTipoDeEmpleado.getSelectedItem().toString();
         String nombreCompleto = jTextFieldNombre.getText();
+        int idEmpleado = Integer.parseInt(jTextFieldCi.getText());
         int telefono = Integer.parseInt(jTextFieldTelefono.getText());
         String direccion = jTextFieldDireccion.getText();
         String correo = jTextFieldEMail.getText();
         double sueldoFijo = Double.parseDouble(jTextFieldSueldo.getText());
         String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
-        String mensaje = ControladorEmpleado.registrarEmpleado(tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago);
+        String mensaje = ControladorEmpleado.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago);
         if (mensaje.equals("Exito")) {
             mostrarMensaje(mensaje);
         }
