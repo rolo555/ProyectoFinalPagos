@@ -5,7 +5,9 @@
 
 package controlador;
 
+import java.util.Calendar;
 import javax.swing.JComboBox;
+import modelo.FechaDelSistema;
 
 /**
  *
@@ -19,4 +21,13 @@ public class ControladorMaquinaDelTiempo {
             cbDia.addItem( i );
         }
     }
+
+    public Calendar getFechaDelSistema(){
+        return FechaDelSistema.getFechaDelSistema();
+    }
+
+    public void viajarEnElTiempo(int dia, int mes, int anio) {
+        FechaDelSistema.actualizarFecha(dia, mes, anio);
+    }
+
 }

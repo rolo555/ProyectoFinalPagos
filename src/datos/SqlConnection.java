@@ -1,4 +1,4 @@
-package Controladores;
+package datos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
