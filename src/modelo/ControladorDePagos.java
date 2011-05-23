@@ -64,13 +64,11 @@ public class ControladorDePagos {
     {
         ArrayList<EmpleadoFijo> empleados = getEmpleadosConComision();
          for (int i = 0; i < empleados.size(); i++) {
-            PapeletaDePago papeleta;
+            
             EmpleadoFijo empleadoAux = empleados.get(i);
             Comision comisionEmpleadoAux = new Comision(empleadoAux.getIdEmpleado(), empleadoAux.getPorcentajeComision());
             double sueldoBruto = comisionEmpleadoAux.getComision(fechaInicio, fechaFin);
-            {
-                papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
-            }
+            PapeletaDePago papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
             FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
             formaDePago.pagar(papeleta);
         }

@@ -14,9 +14,9 @@ import java.util.Calendar;
  */
 public class Comision
 {
-    private String idEmpleado;
+    private int idEmpleado;
     double porcentajeComision;
-    public Comision(String idEmpleado,double porcentajeComision)
+    public Comision(int idEmpleado,double porcentajeComision)
     {
         this.idEmpleado = idEmpleado;
         this.porcentajeComision = porcentajeComision;
