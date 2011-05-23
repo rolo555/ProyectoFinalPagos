@@ -9,6 +9,7 @@ import datos.SqlConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Empleado;
 
 /**
  *
@@ -16,14 +17,17 @@ import java.util.List;
  */
 public class ControladorSindicato {
 
-    public static List<Integer> getListaEmpleadosSinSindicato() {
-        List<Integer> empleadosSinSindicato = new ArrayList<Integer>();
-        String consulta = "SELECT id FROM empleado WHERE aporte_jubilacion = '-1'";
+    public static List<Empleado> getListaEmpleadosSinSindicato() {
+        List<Empleado> empleadosSinSindicato = new ArrayList<Empleado>();
+        String consulta = "SELECT id, nombre_completo FROM empleado WHERE aporte_jubilacion = '-1'";
+        Empleado empleado = null;
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
             while (rs.next()) {
-                empleadosSinSindicato.add(rs.getInt("id"));
+                empleado.setId(rs.getInt("id"));
+                empleado.setNombre(rs.getString("nombre_completo"));
+                empleadosSinSindicato.add(empleado);
             }
             SqlConnection.desconectar();
         } catch (Exception e) {

@@ -14,6 +14,7 @@ package vista;
 import controlador.ControladorSindicato;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Empleado;
 
 /**
  *
@@ -164,11 +165,11 @@ public class Sindicato extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void llenarEmpleadosSinSindicato() {
-        List<Integer> empleadosSinSindicato;
+        List<Empleado> empleadosSinSindicato;
         empleadosSinSindicato = ControladorSindicato.getListaEmpleadosSinSindicato();
         jComboBoxEmpleados.removeAllItems();
-        for(Integer id : empleadosSinSindicato){
-            jComboBoxEmpleados.addItem(id);
+        for(Empleado empleado : empleadosSinSindicato){
+            jComboBoxEmpleados.addItem(String.valueOf(empleado.getIdEmpleado())+" - "+(empleado.getNombre()));
         }
     }
 
