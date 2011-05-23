@@ -11,6 +11,10 @@
 
 package vista;
 
+import controlador.ControladorSindicato;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Rolo
@@ -20,6 +24,7 @@ public class Sindicato extends javax.swing.JInternalFrame {
     /** Creates new form Sindicato */
     public Sindicato() {
         initComponents();
+        llenarEmpleadosSinSindicato();
     }
 
     /** This method is called from within the constructor to
@@ -157,5 +162,14 @@ public class Sindicato extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldPorcentajeDeAporte;
     // End of variables declaration//GEN-END:variables
+
+    private void llenarEmpleadosSinSindicato() {
+        List<Integer> empleadosSinSindicato;
+        empleadosSinSindicato = ControladorSindicato.getListaEmpleadosSinSindicato();
+        jComboBoxEmpleados.removeAllItems();
+        for(Integer id : empleadosSinSindicato){
+            jComboBoxEmpleados.addItem(id);
+        }
+    }
 
 }
