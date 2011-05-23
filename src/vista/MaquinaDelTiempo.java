@@ -22,19 +22,23 @@ import java.util.GregorianCalendar;
  */
 public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
 
-    ControladorMaquinaDelTiempo controladorMaquinaDelTiempo = new ControladorMaquinaDelTiempo();
+    ControladorMaquinaDelTiempo controladorMaquinaDelTiempo;
 
     /** Creates new form MaquinaDelTiempo */
     public MaquinaDelTiempo() {
         initComponents();
+        controladorMaquinaDelTiempo = new ControladorMaquinaDelTiempo(this);
         mostrarFechaActual();
     }
 
     private void mostrarFechaActual(){
-        Calendar fecha = controladorMaquinaDelTiempo.getFechaDelSistema();
-        jLabelDia.setText(Integer.toString(fecha.get(Calendar.DAY_OF_MONTH)));
-        jLabelMes.setText(Integer.toString(fecha.get(Calendar.MONTH)));
-        jLabelAnio.setText(Integer.toString(fecha.get(Calendar.YEAR)));
+        controladorMaquinaDelTiempo.llenarFechaActual();
+    }
+
+    public void setFechaActual(Calendar fechaActual){
+        jLabelDia.setText(Integer.toString(fechaActual.get(Calendar.DAY_OF_MONTH)));
+        jLabelMes.setText(Integer.toString(fechaActual.get(Calendar.MONTH)));
+        jLabelAnio.setText(Integer.toString(fechaActual.get(Calendar.YEAR)));
     }
 
     /** This method is called from within the constructor to
