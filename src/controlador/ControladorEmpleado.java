@@ -12,11 +12,11 @@ import modelo.Empleado;
  * @author HP
  */
 public class ControladorEmpleado {
-    public static String registrarEmpleado(String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago)
+    public static String registrarEmpleado(int idEmpleado,String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago)
     {
         String mensaje = "";
         Empleado empleado = Empleado.FactoryEmpleado(tipoEmpleado);
-        empleado.setArgumentosDeEmpleado(1, nombreCompleto, telefono, direccion, correo, sueldoFijo, formaDePago);
+        empleado.setArgumentosDeEmpleado(idEmpleado, nombreCompleto, telefono, direccion, correo, sueldoFijo, formaDePago);
         mensaje = empleado.guardar();
         return mensaje;
     }
