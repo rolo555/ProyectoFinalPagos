@@ -53,7 +53,7 @@ public class ControladorDeFecha {
         int contadorViernes = 0;
         Calendar cal = Calendar.getInstance();
         cal.set(fechaActual.get(Calendar.YEAR), 0, 1);//revisar metodo raro
-        int ultimoDia = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+        int ultimoDia = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         cal.set(Calendar.DAY_OF_MONTH, ultimoDia);
          for (int i = 0; cal.before(fechaActual); i++) {
              cal.add(Calendar.DAY_OF_MONTH, 1);

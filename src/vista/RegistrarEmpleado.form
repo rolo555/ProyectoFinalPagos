@@ -44,22 +44,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldNombre" pref="244" max="32767" attributes="0"/>
+                      <Component id="jTextFieldNombre" pref="153" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelTelefono" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="jTextFieldTelefono" pref="244" max="32767" attributes="0"/>
+                      <Component id="jTextFieldTelefono" pref="153" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jPanelPorcentajeComision" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanelDireccionPago" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="1">
-                      <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonLimpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonRegistrar" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -76,8 +69,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextFieldEMail" alignment="0" pref="244" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldDireccion" alignment="0" pref="244" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldEMail" alignment="0" pref="153" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldDireccion" alignment="0" pref="153" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -86,7 +79,15 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonLimpiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonRegistrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -138,13 +139,13 @@
               <Component id="jPanelDireccionPago" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelPorcentajeComision" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -233,7 +234,7 @@
               <Group type="102" attributes="0">
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldNombreBanco" pref="231" max="32767" attributes="0"/>
+                  <Component id="jTextFieldNombreBanco" pref="220" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -273,6 +274,9 @@
         <Property name="text" type="java.lang.String" resourceKey="jButtonRegistrar.text"/>
         <Property name="name" type="java.lang.String" value="jButtonRegistrar" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonLimpiar">
       <Properties>
@@ -328,7 +332,7 @@
                   <Component id="jTextFieldPorcentajeComision" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="157" max="32767" attributes="0"/>
+                  <EmptySpace pref="66" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -385,7 +389,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextFieldDireccionPago" pref="232" max="32767" attributes="0"/>
+                  <Component id="jTextFieldDireccionPago" pref="221" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>

@@ -10,6 +10,7 @@
  */
 package vista;
 
+import controlador.ControladorEmpleado;
 import java.awt.Color;
 import org.jdesktop.application.Action;
 
@@ -131,7 +132,7 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
             .addGroup(jPanelNombreBancoLayout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldNombreBanco, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(jTextFieldNombreBanco, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelNombreBancoLayout.setVerticalGroup(
@@ -146,6 +147,11 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
 
         jButtonRegistrar.setText(resourceMap.getString("jButtonRegistrar.text")); // NOI18N
         jButtonRegistrar.setName("jButtonRegistrar"); // NOI18N
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
 
         jButtonLimpiar.setText(resourceMap.getString("jButtonLimpiar.text")); // NOI18N
         jButtonLimpiar.setActionCommand(resourceMap.getString("jButtonLimpiar.actionCommand")); // NOI18N
@@ -196,7 +202,7 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
                 .addComponent(jTextFieldPorcentajeComision, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanelPorcentajeComisionLayout.setVerticalGroup(
             jPanelPorcentajeComisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +232,7 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
             .addGroup(jPanelDireccionPagoLayout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDireccionPago, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addComponent(jTextFieldDireccionPago, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelDireccionPagoLayout.setVerticalGroup(
@@ -252,19 +258,13 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelTelefono)
                         .addGap(45, 45, 45)
-                        .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                        .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                     .addComponent(jPanelPorcentajeComision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelDireccionPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRegistrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelDireccion)
@@ -279,11 +279,18 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
                                         .addComponent(jTextFieldSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel6))
-                                    .addComponent(jTextFieldEMail, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
+                                    .addComponent(jTextFieldEMail, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBoxFormaDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jComboBoxFormaDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLimpiar)
+                        .addGap(83, 83, 83)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonRegistrar)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -326,12 +333,12 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
                 .addComponent(jPanelDireccionPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelPorcentajeComision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRegistrar)
                     .addComponent(jButtonLimpiar)
-                    .addComponent(jButtonCancelar))
-                .addContainerGap())
+                    .addComponent(jButtonCancelar)
+                    .addComponent(jButtonRegistrar))
+                .addGap(69, 69, 69))
         );
 
         getAccessibleContext().setAccessibleName(resourceMap.getString("Form.AccessibleContext.accessibleName")); // NOI18N
@@ -375,6 +382,25 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_mostrarPorcentajeComision
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        String tipoEmpleado= jComboBoxTipoDeEmpleado.getSelectedItem().toString();
+        String nombreCompleto = jTextFieldNombre.getText();
+        int telefono = Integer.parseInt(jTextFieldTelefono.getText());
+        String direccion = jTextFieldDireccion.getText();
+        String correo = jTextFieldEMail.getText();
+        double sueldoFijo = Double.parseDouble(jTextFieldSueldo.getText());
+        String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
+        String mensaje = ControladorEmpleado.registrarEmpleado(tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago);
+        if (mensaje.equals("Exito")) {
+            mostrarMensaje(mensaje);
+        }
+        else
+        {
+            mostrarError(mensaje);
+        }
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLimpiar;

@@ -12,11 +12,11 @@ import java.util.Date;
  * @author HP
  */
 public class TarjetaDiaria {
-    private String idEmpleado;
+    private int idEmpleado;
     private Calendar fecha;
     private int horasTrabajadas;
 
-    public TarjetaDiaria(String idEmpleado, Calendar fecha, int cantidadHoras) {
+    public TarjetaDiaria(int idEmpleado, Calendar fecha, int cantidadHoras) {
         this.fecha = fecha;
         this.horasTrabajadas = cantidadHoras;
         this.idEmpleado = idEmpleado;

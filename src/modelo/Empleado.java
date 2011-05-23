@@ -13,23 +13,38 @@ import java.util.Calendar;
  */
 public abstract class Empleado {
 
-    protected String idEmpleado;
+    protected int idEmpleado;
     protected String nombreCompleto;
     protected int telefono;
     protected String direccion;
     protected double aporteJubilacion = -1;
     protected double sueldoFijo;
     protected String formaDePago;
+    protected String correoElectronico;
+    public static String EmpleadoConComision = "Empleado fijo con comision";
+    public static String EmpleadoPorHora = "Empleado por hora";
+    public static String EmpleadoFijo = "Empleado fijo";
 
-    public void setArgumentosDeEmpleado(String idEmpleado, String nombreCompleto, int telefono, String direccion, double sueldoFijo, String formaDePago) {
+    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion,String correo, double sueldoFijo, String formaDePago) {
         this.idEmpleado = idEmpleado;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
         this.direccion = direccion;
         this.sueldoFijo = sueldoFijo;
         this.formaDePago = formaDePago;
+        this.correoElectronico = correo;
     }
-
+    public static Empleado FactoryEmpleado(String tipoEmpleado)
+    {
+        Empleado empleado = null;
+        if (tipoEmpleado.equals(EmpleadoPorHora)) {
+            empleado = new EmpleadoPorHoras();
+        }
+        if (tipoEmpleado.equals(EmpleadoFijo)||tipoEmpleado.equals(EmpleadoConComision)) {
+            empleado = new EmpleadoFijo();
+        }
+        return empleado;
+    }
     public void agregarAlSindicato(double aporteJubilacion) {
         this.aporteJubilacion = aporteJubilacion;
     }
@@ -38,7 +53,7 @@ public abstract class Empleado {
         return this.sueldoFijo;
     }
 
-    String getIdEmpleado() {
+    public int getIdEmpleado() {
         return idEmpleado;
     }
 
@@ -55,4 +70,5 @@ public abstract class Empleado {
     double getAporteJubilacion() {
         return aporteJubilacion;
     }
+    public abstract String guardar();
 }

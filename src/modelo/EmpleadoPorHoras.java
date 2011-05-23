@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import Controladores.SqlConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,6 +47,21 @@ public class EmpleadoPorHoras extends Empleado{
             sueldo += tarjetasPorMes.get(i).getHorasExtras()*1.5/100;
         }
         return sueldo;
+    }
+
+     public String guardar() {
+        String consulta;
+            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado)Values ('"+this.idEmpleado+"','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','" + this.sueldoFijo+"','"+Empleado.EmpleadoPorHora+"')";
+        try {
+            SqlConnection.conectar();
+            SqlConnection.ejecutar(consulta);
+            SqlConnection.desconectar();
+            System.out.println(consulta);
+         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
+        return "Exito";
     }
 
 }

@@ -12,14 +12,14 @@ import java.util.Calendar;
  * @author HP
  */
 public class PapeletaDePago {
-    String idEmpleado;
+    int idEmpleado;
     Calendar fechaInicio;
     Calendar fechaFin;
     double sueldoBruto;
     double sueldoLiquido;
     double AporteJubilacion;
     double descuentoPorServicios;
-    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto, double jubilacion, double descuento)
+    public PapeletaDePago( int idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto, double jubilacion, double descuento)
     {
         this.idEmpleado = idEmpleado;
         this.fechaInicio = fechaIni;
@@ -29,7 +29,7 @@ public class PapeletaDePago {
         this.descuentoPorServicios = descuento;
         this.sueldoLiquido = sueldoBruto-jubilacion-descuentoPorServicios;
     }
-    public PapeletaDePago( String idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto)
+    public PapeletaDePago( int idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto)
     {
         this.idEmpleado = idEmpleado;
         this.fechaInicio = fechaIni;
