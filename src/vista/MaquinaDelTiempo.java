@@ -27,16 +27,14 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     /** Creates new form MaquinaDelTiempo */
     public MaquinaDelTiempo() {
         initComponents();
+        mostrarFechaActual();
     }
 
-    private void mostrarError(String mensaje) {
-        jLabelMensaje.setForeground(Color.RED);
-        jLabelMensaje.setText(mensaje);
-    }
-
-    private void mostrarMensaje(String mensaje) {
-        jLabelMensaje.setForeground(Color.GREEN);
-        jLabelMensaje.setText(mensaje);
+    private void mostrarFechaActual(){
+        Calendar fecha = controladorMaquinaDelTiempo.getFechaDelSistema();
+        jLabelDia.setText(Integer.toString(fecha.get(Calendar.DAY_OF_MONTH)));
+        jLabelMes.setText(Integer.toString(fecha.get(Calendar.MONTH)));
+        jLabelAnio.setText(Integer.toString(fecha.get(Calendar.YEAR)));
     }
 
     /** This method is called from within the constructor to
@@ -60,11 +58,9 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
         jComboBoxMes = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jComboBoxAnio = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabelMensaje = new javax.swing.JLabel();
+        jButtonViajar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
-        setClosable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(MaquinaDelTiempo.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
@@ -115,14 +111,21 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
+        jButtonViajar.setText(resourceMap.getString("jButtonViajar.text")); // NOI18N
+        jButtonViajar.setName("jButtonViajar"); // NOI18N
+        jButtonViajar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButtonViajarMouseReleased(evt);
+            }
+        });
 
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
-
-        jLabelMensaje.setText(resourceMap.getString("jLabelMensaje.text")); // NOI18N
-        jLabelMensaje.setName("jLabelMensaje"); // NOI18N
+        jButtonCancelar.setText(resourceMap.getString("jButtonCancelar.text")); // NOI18N
+        jButtonCancelar.setName("jButtonCancelar"); // NOI18N
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,21 +159,15 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
                         .addComponent(jComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonViajar)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelMensaje)
-                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelMensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabelDia)
@@ -189,8 +186,8 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
                     .addComponent(jComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonViajar)
+                    .addComponent(jButtonCancelar))
                 .addContainerGap())
         );
 
@@ -206,10 +203,22 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
         controladorMaquinaDelTiempo.llenar_opciones_dias(jComboBoxDia, diaMaximo);
     }//GEN-LAST:event_modificar_opciones_dias
 
+    private void jButtonCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseReleased
+        setVisible(false);
+    }//GEN-LAST:event_jButtonCancelarMouseReleased
+
+    private void jButtonViajarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonViajarMouseReleased
+        int anio = Integer.parseInt(jComboBoxAnio.getSelectedItem().toString());
+        int mes = jComboBoxMes.getSelectedIndex();
+        int dia = jComboBoxDia.getSelectedIndex()+1;
+        controladorMaquinaDelTiempo.viajarEnElTiempo(dia, mes, anio);
+        mostrarFechaActual();
+    }//GEN-LAST:event_jButtonViajarMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonViajar;
     private javax.swing.JComboBox jComboBoxAnio;
     private javax.swing.JComboBox jComboBoxDia;
     private javax.swing.JComboBox jComboBoxMes;
@@ -221,7 +230,6 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelAnio;
     private javax.swing.JLabel jLabelDia;
-    private javax.swing.JLabel jLabelMensaje;
     private javax.swing.JLabel jLabelMes;
     // End of variables declaration//GEN-END:variables
 

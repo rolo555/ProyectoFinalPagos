@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Controladores.SqlConnection;
+import datos.SqlConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -37,9 +37,9 @@ public class EmpleadoFijo extends Empleado {
     public String guardar() {
         String consulta;
         if (this.porcentajeComision!= -1) {
-            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision)Values ('"+this.idEmpleado+"','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','" + this.sueldoFijo+"','"+Empleado.EmpleadoConComision+"', '"+this.porcentajeComision+"')";
+            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision)Values ('" + this.idEmpleado + "','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','"+Empleado.EmpleadoConComision+"', '"+this.porcentajeComision+"')";
         }else{
-            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado)Values ('"+this.idEmpleado+"','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','" + this.sueldoFijo+"','"+Empleado.EmpleadoFijo+"')";
+            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado)Values ('" + this.idEmpleado + "','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','"+Empleado.EmpleadoFijo+"')";
         }
         try {
             SqlConnection.conectar();
