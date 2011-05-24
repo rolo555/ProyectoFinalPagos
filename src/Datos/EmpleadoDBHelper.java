@@ -14,10 +14,10 @@ import modelo.Empleado;
 
 public class EmpleadoDBHelper {
 
-    public static boolean agregarAlSindicato(int idEmpleado,double aporteJubilacion)
+    public static boolean setAporteJubilacion(int idEmpleado,double aporteJubilacion)
     {
        boolean exito = true;
-        String consulta = "INSERT INTO venta (id_empleado, fecha, monto) VALUES";
+        String consulta = "UPDATE empleado SET aporte_jubilacion = '"+aporteJubilacion+"' WHERE id_empleado = '"+idEmpleado+"' ) VALUES";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
@@ -28,21 +28,20 @@ public class EmpleadoDBHelper {
         }
         return exito;
     }
-    public static ArrayList<Empleado> getEmpleadosPorComision() {
-        ArrayList<Empleado> ventas = new ArrayList<Empleado>();
-        String consulta = "SELECT * FROM empleado WHERE )";
+    public static ArrayList<String> getEmpleadosPorComision() {
+        ArrayList<String> empleados = new ArrayList<String>();
+        String consulta = "SELECT * FROM empleado WHERE aporte_jubilcacion = '-1' )";
         try {
-        /*    SqlConnection.conectar();
+            SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
             while (rs.next()) {
 
-                Empleado venta = new EmpleadoPorHoras();
-                ventas.add(venta);
-            }*/
+             //   empleados.add(venta);
+            }
             SqlConnection.desconectar();
         } catch (Exception e) {
             System.out.printf(e.getMessage());
         }
-        return ventas;
+        return empleados;
     }
 }
