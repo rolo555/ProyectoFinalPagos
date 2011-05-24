@@ -46,7 +46,4 @@ public class ControladorVenta {
         nuevaVenta = new Venta(fecha, monto, idEmpleado);
         VentasDBHelper.guardarVenta(nuevaVenta);
     }
-
-
-
 }

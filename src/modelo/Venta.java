@@ -32,7 +32,7 @@ public class Venta{
     }
 
     public int getIdEmpleado() {
-        return this.getIdEmpleado();
+        return this.idEmpleado;
     }
 
     public boolean guardar(){
