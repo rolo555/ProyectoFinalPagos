@@ -30,7 +30,7 @@ public class EmpleadoDBHelper {
     }
     public static ArrayList<String> getEmpleadosPorComision() {
         ArrayList<String> empleados = new ArrayList<String>();
-        String consulta = "SELECT * FROM empleado WHERE aporte_jubilcacion = '-1' )";
+        String consulta = "SELECT * FROM empleado WHERE porcentaje_comision = '-1' )";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
