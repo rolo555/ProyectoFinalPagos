@@ -66,4 +66,19 @@ public class EmpleadoDBHelper {
         }
         return empleadosSinSindicato;
     }
+    public static boolean existeEmpleado(int idEmpleado){
+        String consulta = "SELECT * FROM empleado WHERE id = '"+idEmpleado+"'";
+        boolean existe = false;
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            if (rs.next()) {
+                existe = true;
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return existe;
+    }
 }
