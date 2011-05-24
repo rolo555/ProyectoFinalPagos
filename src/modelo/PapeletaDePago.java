@@ -45,5 +45,8 @@ public class PapeletaDePago {
     {
         System.out.println("Imprimiendo Papeleta");
     }
+    public void guardar()
+    {
+    }
 
 }
