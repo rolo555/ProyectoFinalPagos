@@ -20,7 +20,7 @@ public class ServicioDBHelper {
     public static boolean guardarServicio(Servicio servicio)
     {
         boolean exito = true;
-        String consulta = "INSERT INTO venta (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+servicio.fecha+"')";
+        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+servicio.fecha+"')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
