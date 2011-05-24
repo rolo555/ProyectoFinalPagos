@@ -8,7 +8,7 @@ package controlador;
 import datos.FechaDelSistemaDBHelper;
 import java.util.Calendar;
 import javax.swing.JComboBox;
-import modelo.FechaDelSistema;
+import datos.FechaDelSistema;
 import vista.MaquinaDelTiempo;
 
 /**
@@ -32,7 +32,7 @@ public class ControladorMaquinaDelTiempo {
     }
 
     public void viajarEnElTiempo(int dia, int mes, int anio) {
-        FechaDelSistema.actualizarFecha(dia, mes, anio);
+        fechaHelper.actualizarFecha(dia, mes, anio);
     }
 
     public void llenarFechaActual() {
