@@ -37,7 +37,7 @@ public class EmpleadoPorHoras extends Empleado{
         ArrayList<TarjetaDiaria> tarjetasPorMes = getTarjetas(fechaInicio, fechaFin);
         for (int i = 0; i < tarjetasPorMes.size(); i++) {
             sueldo += tarjetasPorMes.get(i).getHorasTrabajadas()*this.sueldoFijo;
-            sueldo += tarjetasPorMes.get(i).getHorasExtras()*(1.5/100*this.sueldoFijo);
+            sueldo += tarjetasPorMes.get(i).calcularHorasExtras()*(1.5/100*this.sueldoFijo);
         }
         return sueldo;
     }
