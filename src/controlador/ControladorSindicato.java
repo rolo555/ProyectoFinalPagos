@@ -5,6 +5,7 @@
 
 package controlador;
 
+import datos.EmpleadoDBHelper;
 import datos.SindicatoDBHelper;
 import datos.SqlConnection;
 import java.sql.ResultSet;
@@ -21,13 +22,14 @@ public class ControladorSindicato {
 
     Sindicato sindicato;
     SindicatoDBHelper sindicatoDBHelper = new SindicatoDBHelper();
+    EmpleadoDBHelper empleadoDBHelper = new EmpleadoDBHelper();
 
     public ControladorSindicato(Sindicato sindicato){
         this.sindicato = sindicato;
     }
 
     public void llenarEmpleadosSinSindicato(){
-        ArrayList<String> empleadosSinSindicato = sindicatoDBHelper.getEmpleadosSinSindicato();
+        ArrayList<String> empleadosSinSindicato = empleadoDBHelper.getEmpleadosSinSindicato();
         sindicato.setEmpleados(empleadosSinSindicato);
     }
 
