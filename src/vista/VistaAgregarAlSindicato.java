@@ -4,7 +4,7 @@
  */
 
 /*
- * Sindicato.java
+ * VistaAgregarAlSindicato.java
  *
  * Created on May 22, 2011, 10:31:18 PM
  */
@@ -21,12 +21,12 @@ import modelo.Empleado;
  *
  * @author Rolo
  */
-public class Sindicato extends javax.swing.JInternalFrame {
+public class VistaAgregarAlSindicato extends javax.swing.JInternalFrame {
 
     ControladorSindicato controladorSindicato;
 
-    /** Creates new form Sindicato */
-    public Sindicato() {
+    /** Creates new form VistaAgregarAlSindicato */
+    public VistaAgregarAlSindicato() {
         initComponents();
         controladorSindicato = new ControladorSindicato(this);
         controladorSindicato.llenarEmpleadosSinSindicato();
@@ -63,7 +63,7 @@ public class Sindicato extends javax.swing.JInternalFrame {
         jLabelMensaje = new javax.swing.JLabel();
         jButtonRefescar = new javax.swing.JButton();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(Sindicato.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(VistaAgregarAlSindicato.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
 
@@ -179,7 +179,7 @@ public class Sindicato extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelMensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

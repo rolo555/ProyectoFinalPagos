@@ -6,6 +6,7 @@
 package datos;
 
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +21,8 @@ public class ServicioDBHelper {
     public static boolean guardarServicio(Servicio servicio)
     {
         boolean exito = true;
-        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+servicio.fecha+"')";
+        Date fecha = servicio.fecha.getTime();
+        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+fecha+"')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);

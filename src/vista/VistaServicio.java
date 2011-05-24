@@ -297,7 +297,7 @@ public class VistaServicio extends javax.swing.JInternalFrame {
 
     public Calendar getFecha() {
         int anio = Integer.valueOf(jComboBoxAnio.getSelectedItem().toString());
-        int mes = Integer.valueOf(jComboBoxMes.getSelectedItem().toString());
+        int mes = jComboBoxMes.getSelectedIndex();
         int dia = Integer.valueOf(jComboBoxDia.getSelectedItem().toString());
         Calendar fecha = Calendar.getInstance();
         fecha.set(anio, mes, dia);
