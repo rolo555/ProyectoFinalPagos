@@ -21,11 +21,12 @@ public abstract class Empleado {
     protected double sueldoFijo;
     protected String formaDePago;
     protected String correoElectronico;
+    protected String direccionDePago;
     public static String EmpleadoConComision = "Empleado fijo con comision";
     public static String EmpleadoPorHora = "Empleado por hora";
     public static String EmpleadoFijo = "Empleado fijo";
 
-    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago) {
+    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago, String direccionDePago) {
         this.idEmpleado = idEmpleado;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
@@ -33,6 +34,7 @@ public abstract class Empleado {
         this.sueldoFijo = sueldoFijo;
         this.formaDePago = formaDePago;
         this.correoElectronico = correo;
+        this.direccionDePago = direccionDePago;
     }
 
     public static Empleado FactoryEmpleado(String tipoEmpleado) {

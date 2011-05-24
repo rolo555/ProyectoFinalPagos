@@ -387,7 +387,7 @@ public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_mostrarPorcentajeComision
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        String mensaje = ControladorEmpleado.registrarEmpleado(jTextFieldCi, jComboBoxTipoDeEmpleado ,jTextFieldNombre, jTextFieldTelefono, jTextFieldDireccion, jTextFieldEMail, jTextFieldSueldo, jComboBoxFormaDePago);
+        String mensaje = ControladorEmpleado.registrarEmpleado(jTextFieldCi, jComboBoxTipoDeEmpleado ,jTextFieldNombre, jTextFieldTelefono, jTextFieldDireccion, jTextFieldEMail, jTextFieldSueldo, jComboBoxFormaDePago, jTextFieldDireccionPago, jTextFieldNombreBanco);
         if (mensaje.equals("Exito")) {
             ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
         }
