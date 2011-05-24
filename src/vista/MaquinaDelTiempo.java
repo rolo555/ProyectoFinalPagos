@@ -36,9 +36,7 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     }
 
     public void setFechaActual(Calendar fechaActual){
-        jLabelDia.setText(Integer.toString(fechaActual.get(Calendar.DAY_OF_MONTH)));
-        jLabelMes.setText(Integer.toString(fechaActual.get(Calendar.MONTH)));
-        jLabelAnio.setText(Integer.toString(fechaActual.get(Calendar.YEAR)));
+        controladorMaquinaDelTiempo.setFecha(jLabelDia,jLabelMes,jLabelAnio,fechaActual);
     }
 
     /** This method is called from within the constructor to
@@ -199,12 +197,7 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificar_opciones_dias(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modificar_opciones_dias
-        int anio = Integer.parseInt(jComboBoxAnio.getSelectedItem().toString()); 
-        int mes = jComboBoxMes.getSelectedIndex();
-        Calendar fecha = Calendar.getInstance();
-        fecha.set(anio, mes, 5);
-        int diaMaximo = fecha.getActualMaximum(Calendar.DAY_OF_MONTH);
-        controladorMaquinaDelTiempo.llenar_opciones_dias(jComboBoxDia, diaMaximo);
+        controladorMaquinaDelTiempo.modificarOpcionDias(jComboBoxAnio,jComboBoxMes,jComboBoxDia);
     }//GEN-LAST:event_modificar_opciones_dias
 
     private void jButtonCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseReleased
@@ -212,10 +205,7 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonCancelarMouseReleased
 
     private void jButtonViajarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonViajarMouseReleased
-        int anio = Integer.parseInt(jComboBoxAnio.getSelectedItem().toString());
-        int mes = jComboBoxMes.getSelectedIndex();
-        int dia = jComboBoxDia.getSelectedIndex()+1;
-        controladorMaquinaDelTiempo.viajarEnElTiempo(dia, mes, anio);
+        controladorMaquinaDelTiempo.viajarEnElTiempo(jComboBoxAnio, jComboBoxMes, jComboBoxDia);
         mostrarFechaActual();
     }//GEN-LAST:event_jButtonViajarMouseReleased
 
