@@ -23,7 +23,7 @@ public class TarjetaDiariaDBHelper {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = tarjeta.getFecha().getTime();
         String fechaString= sdf.format(fecha);
-        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  fechaString + "','" + tarjeta.getHorasTrabajadas() + "')";
+        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas, hora_entrada) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  fechaString + "','" + tarjeta.getHorasTrabajadas() + "', '"+tarjeta.getHoraEntrada()+"')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
@@ -48,10 +48,11 @@ public class TarjetaDiariaDBHelper {
             while (rs.next()) {
                 int idEmpl = rs.getInt("id_empleado");
                 Date date = rs.getDate("fecha");
+                int horaEntrada = rs.getInt("hora_entrada");
                 Calendar fecha = Calendar.getInstance();
                 fecha.setTime(date);
                 int horasTrabajadas = rs.getInt("horas_trabajadas");
-                TarjetaDiaria servicio = new TarjetaDiaria(idEmpl,fecha,horasTrabajadas);
+                TarjetaDiaria servicio = new TarjetaDiaria(idEmpl,fecha,horasTrabajadas, horaEntrada);
                 servicios.add(servicio);
             }
             SqlConnection.desconectar();

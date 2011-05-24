@@ -14,17 +14,22 @@ import java.util.Date;
 public class TarjetaDiaria {
     private int idEmpleado;
     private Calendar fecha;
+    private int horaEntrada;
     private int horasTrabajadas;
 
-    public TarjetaDiaria(int idEmpleado, Calendar fecha, int cantidadHoras) {
+    public TarjetaDiaria(int idEmpleado, Calendar fecha, int cantidadHoras, int hora) {
         this.fecha = fecha;
         this.horasTrabajadas = cantidadHoras;
         this.idEmpleado = idEmpleado;
+        this.horaEntrada = hora;
     }
-    
+    public int getHoraEntrada()
+    {
+        return this.horaEntrada;
+    }
     public int getHorasExtras()
     {
-        int horaInicio = this.fecha.get(Calendar.HOUR_OF_DAY);
+        int horaInicio = this.horaEntrada;
         int horaFinal = horaInicio+ this.horasTrabajadas;
         if (horaInicio>=19) {
             return horasTrabajadas;
