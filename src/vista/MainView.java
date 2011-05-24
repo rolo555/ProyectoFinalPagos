@@ -21,7 +21,7 @@ import javax.swing.JFrame;
  */
 public class MainView extends FrameView {
 
-    private VistaRegistrarEmpleado empleadoPorHora;
+    private VistaRegistrarEmpleado vistaRegistroEmpleado;
     private MaquinaDelTiempo maquinaDelTiempo;
     private VistaAgregarAlSindicato vistaSindicato;
     private VistaServicio vistaServicio;
@@ -148,7 +148,7 @@ public class MainView extends FrameView {
         fileMenu.setName("fileMenuEmpleado"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getActionMap(MainView.class, this);
-        exitMenuItem.setAction(actionMap.get("abrirEmpleadoPorHora")); // NOI18N
+        exitMenuItem.setAction(actionMap.get("abrirRegistrarEmpleado")); // NOI18N
         exitMenuItem.setText(resourceMap.getString("MenuItemRegistrarEmpleado.text")); // NOI18N
         exitMenuItem.setName("MenuItemRegistrarEmpleado"); // NOI18N
         fileMenu.add(exitMenuItem);
@@ -168,12 +168,12 @@ public class MainView extends FrameView {
         jMenu2.setText(resourceMap.getString("jMenu2.text")); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
 
-        jMenuItem2.setAction(actionMap.get("abrirSindicato")); // NOI18N
+        jMenuItem2.setAction(actionMap.get("abrirVistaSindicato")); // NOI18N
         jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
         jMenuItem2.setName("jMenuItem2"); // NOI18N
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setAction(actionMap.get("abrirServicio")); // NOI18N
+        jMenuItem3.setAction(actionMap.get("abrirVistaServicio")); // NOI18N
         jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
         jMenuItem3.setName("jMenuItem3"); // NOI18N
         jMenu2.add(jMenuItem3);
@@ -243,11 +243,11 @@ public class MainView extends FrameView {
 
     @Action
     public void abrirRegistrarEmpleado(){
-        if(empleadoPorHora == null){
-            empleadoPorHora = new VistaRegistrarEmpleado();
-            jDesktopPane1.add(empleadoPorHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        if(vistaRegistroEmpleado == null){
+            vistaRegistroEmpleado = new VistaRegistrarEmpleado();
+            jDesktopPane1.add(vistaRegistroEmpleado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
-        empleadoPorHora.setVisible(true);
+        vistaRegistroEmpleado.setVisible(true);
     }
 
     @Action
