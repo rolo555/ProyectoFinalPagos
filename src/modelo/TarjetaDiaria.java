@@ -46,7 +46,8 @@ public class TarjetaDiaria {
         return fecha;
     }
 
-    void guardar() {
-        //llamar a datos
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
+
 }
