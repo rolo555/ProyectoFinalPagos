@@ -27,7 +27,7 @@ public class TarjetaDiaria {
     {
         return this.horaEntrada;
     }
-    public int getHorasExtras()
+    public int calcularHorasExtras()
     {
         int horaInicio = this.horaEntrada;
         int horaFinal = horaInicio+ this.horasTrabajadas;
