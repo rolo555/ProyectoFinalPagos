@@ -38,10 +38,10 @@ public class EmpleadoDBHelper {
 
                 Empleado venta = new EmpleadoPorHoras();
                 ventas.add(venta);
-            }
+            }*/
             SqlConnection.desconectar();
         } catch (Exception e) {
-            System.out.printf(e.getMessage());*/
+            System.out.printf(e.getMessage());
         }
         return ventas;
     }
