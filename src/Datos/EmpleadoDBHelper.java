@@ -17,7 +17,7 @@ public class EmpleadoDBHelper {
     public static boolean setAporteJubilacion(int idEmpleado,double aporteJubilacion)
     {
        boolean exito = true;
-        String consulta = "UPDATE empleado SET aporte_jubilacion = '"+aporteJubilacion+"' WHERE id_empleado = '"+idEmpleado+"' ) VALUES";
+        String consulta = "UPDATE empleado SET aporte_jubilacion = '"+aporteJubilacion+"' WHERE id_empleado = '"+idEmpleado+"' ) ";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
