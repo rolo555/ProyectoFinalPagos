@@ -19,7 +19,7 @@ public class TarjetaDiariaDBHelper {
      public static boolean guardarServicio(TarjetaDiaria tarjeta)
     {
         boolean exito = true;
-        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horasTrabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  tarjeta.getFecha() + "','" + tarjeta.getHorasTrabajadas() + "')";
+        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  tarjeta.getFecha() + "','" + tarjeta.getHorasTrabajadas() + "')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
