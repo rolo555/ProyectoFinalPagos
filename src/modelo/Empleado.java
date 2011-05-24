@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import datos.EmpleadoDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -47,8 +48,8 @@ public abstract class Empleado {
     }
     public void agregarAlSindicato(double aporteJubilacion) {
         this.aporteJubilacion = aporteJubilacion;
+        EmpleadoDBHelper.agregarAlSindicato(idEmpleado, aporteJubilacion);
     }
-
     public Double getSueldoFijo() {
         return this.sueldoFijo;
     }
