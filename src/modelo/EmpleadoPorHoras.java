@@ -7,7 +7,6 @@ package modelo;
 import datos.SqlConnection;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  *
@@ -28,7 +27,6 @@ public class EmpleadoPorHoras extends Empleado{
     public void llenarTarjetaDiaria(Calendar fecha, int cantidadHoras)
     {
         TarjetaDiaria tarjeta = new TarjetaDiaria(this.idEmpleado, fecha, cantidadHoras);
-        tarjeta.guardar();
     }
 
     public ArrayList<TarjetaDiaria> getTarjetas(Calendar fechaInicio, Calendar fechaFin){

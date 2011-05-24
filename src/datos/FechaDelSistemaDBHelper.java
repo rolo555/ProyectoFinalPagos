@@ -35,4 +35,15 @@ public class FechaDelSistemaDBHelper {
         return fecha;
     }
 
+    public static void actualizarFecha(int dia, int mes, int anio) {
+        String consulta = "UPDATE fecha_del_sistema SET dia='"+ dia +"', mes='"+ mes +"', anio='"+anio+"' WHERE id='1'";
+        try {
+            SqlConnection.conectar();
+            SqlConnection.ejecutar(consulta);
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

@@ -35,7 +35,7 @@ public class EmpleadoDBHelper {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
             while (rs.next()) {
-                String empleado = rs.getString("id_empleado")+"-"+rs.getString("nombre_completo");
+                String empleado = rs.getString("id")+"-"+rs.getString("nombre_completo");
                 empleados.add(empleado);
             }
             SqlConnection.desconectar();
@@ -65,5 +65,20 @@ public class EmpleadoDBHelper {
             System.out.println(e.getMessage());
         }
         return empleadosSinSindicato;
+    }
+    public static boolean existeEmpleado(int idEmpleado){
+        String consulta = "SELECT * FROM empleado WHERE id = '"+idEmpleado+"'";
+        boolean existe = false;
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            if (rs.next()) {
+                existe = true;
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return existe;
     }
 }

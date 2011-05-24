@@ -11,22 +11,19 @@ import java.util.Calendar;
  * @author HP
  */
 public class Servicio {
-    private String idEmpleado;
-    private String descripcionServicio;
-    private Double monto;
-    private Calendar fecha;
+    public int idEmpleado;
+    public String descripcionServicio;
+    public Double monto;
+    public Calendar fecha;
     
-   public Servicio(String idEmpleado, String descripcion, Double monto, Calendar fecha)
+   public Servicio(int idEmpleado, String descripcion, Double monto, Calendar fecha)
    {
        this.idEmpleado = idEmpleado;
        this.descripcionServicio = descripcion;
        this.monto = monto;
        this.fecha = fecha;
    }
-   public void guardar()
-   {
-       //llamar a Datos
-   }
+
    public Double getMonto()
    {
        return this.monto;
