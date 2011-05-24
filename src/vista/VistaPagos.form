@@ -53,6 +53,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButtonPagar">
       <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="jButtonPagar.font"/>
         <Property name="text" type="java.lang.String" resourceKey="jButtonPagar.text"/>
         <Property name="name" type="java.lang.String" value="jButtonPagar" noResource="true"/>
       </Properties>

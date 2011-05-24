@@ -11,15 +11,20 @@
 
 package vista;
 
+import controlador.ControladorPagos;
+
 /**
  *
  * @author Rolo
  */
 public class VistaPagos extends javax.swing.JInternalFrame {
 
+    ControladorPagos controladorPagos;
+
     /** Creates new form VistaPagos */
     public VistaPagos() {
         initComponents();
+        controladorPagos = new ControladorPagos(this);
     }
 
     /** This method is called from within the constructor to
@@ -40,6 +45,7 @@ public class VistaPagos extends javax.swing.JInternalFrame {
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
 
+        jButtonPagar.setFont(resourceMap.getFont("jButtonPagar.font")); // NOI18N
         jButtonPagar.setText(resourceMap.getString("jButtonPagar.text")); // NOI18N
         jButtonPagar.setName("jButtonPagar"); // NOI18N
         jButtonPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +117,7 @@ public class VistaPagos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagarActionPerformed
-        // TODO add your handling code here:
+        controladorPagos.realizarPagos();
     }//GEN-LAST:event_jButtonPagarActionPerformed
 
 

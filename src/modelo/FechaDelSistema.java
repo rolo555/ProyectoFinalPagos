@@ -48,9 +48,8 @@ public class FechaDelSistema {
     }
     private Calendar fechaActual;
 
-    public FechaDelSistema(int dia, int mes, int anio) {
-        this.fechaActual = Calendar.getInstance();
-        fechaActual.set(anio, mes, dia);
+    public FechaDelSistema(Calendar fecha) {
+        this.fechaActual = fecha;
     }
 
     public void setFecha(int dia, int mes, int anio) {

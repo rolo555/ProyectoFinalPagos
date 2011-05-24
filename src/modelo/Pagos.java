@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import controlador.ControladorEmpleado;
+import datos.EmpleadoDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,36 +14,35 @@ import java.util.Date;
  *
  * @author HP
  */
-public class ControladorDePagos {
-    Sindicato sindicato = new Sindicato();
-    public ArrayList<Empleado> getEmpleadosFijos(){
+public class Pagos {
+    static Sindicato sindicato = new Sindicato();
+    public static ArrayList<Empleado> getEmpleadosFijos(){
         ArrayList<Empleado> empleadosFijos = new ArrayList<Empleado>();
         //consultar a dal
         return empleadosFijos;
     }
 
-    private ArrayList<Empleado> getEmpleadosPorHora() {
+    private static ArrayList<Empleado> getEmpleadosPorHora() {
          ArrayList<Empleado> empleadosPorHora = new ArrayList<Empleado>();
-       //consultar a dal
          return empleadosPorHora;
     }
 
-    private ArrayList<EmpleadoFijo> getEmpleadosConComision() {
+    private static ArrayList<EmpleadoFijo> getEmpleadosConComision() {
        ArrayList<EmpleadoFijo> empleadosConComision = new ArrayList<EmpleadoFijo>();
        //consultar a dal
        return empleadosConComision;
     }
-    public void pagarFijos(Calendar fechaInicio, Calendar fechaFin)
+    public static void pagarFijos(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<Empleado> empleadosFijos = getEmpleadosFijos();
         pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
     }
-    public void pagarEmpleadosPorHora(Calendar fechaInicio, Calendar fechaFin)
+    public static void pagarEmpleadosPorHora(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<Empleado> empleadosFijos = getEmpleadosPorHora();
         pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
     }
-    public void pagarAEmpleados(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
+    public static void pagarAEmpleados(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
     {
         for (int i = 0; i < empleados.size(); i++) {
             PapeletaDePago papeleta;
@@ -60,7 +61,7 @@ public class ControladorDePagos {
             formaDePago.pagar(papeleta, empleadoAux.getDireccionDePago(),empleadoAux.getEmail());
         }
     }
-    public void pagarComisiones(Calendar fechaInicio, Calendar fechaFin)
+    public static void pagarComisiones(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<EmpleadoFijo> empleados = getEmpleadosConComision();
          for (int i = 0; i < empleados.size(); i++) {

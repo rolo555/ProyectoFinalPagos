@@ -14,7 +14,7 @@ import java.util.Calendar;
  */
 public class FechaDelSistemaDBHelper {
 
-    public Calendar getFechaDelSistema() {
+    public static Calendar getFechaDelSistema() {
         String consulta = "SELECT * FROM fecha_del_sistema WHERE id=1";
         System.out.println(consulta);
         Calendar fecha = Calendar.getInstance();
