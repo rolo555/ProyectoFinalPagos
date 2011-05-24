@@ -83,6 +83,23 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jMenu2.text"/>
+            <Property name="name" type="java.lang.String" value="jMenu2" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="vista.MainView" id="abrirSindicato" methodName="abrirSindicato"/>
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="jMenuItem2.text"/>
+                <Property name="name" type="java.lang.String" value="jMenuItem2" noResource="true"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="helpMenu.text"/>

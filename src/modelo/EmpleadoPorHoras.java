@@ -16,6 +16,8 @@ import java.util.Date;
 public class EmpleadoPorHoras extends Empleado{
     private ArrayList<TarjetaDiaria> tarjetas = new ArrayList<TarjetaDiaria>();
 
+
+
     public ArrayList<TarjetaDiaria> tarjetasEnMes(Calendar inicio, Calendar Fin){
         for(TarjetaDiaria tarjeta: tarjetas){
 

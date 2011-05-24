@@ -5,7 +5,6 @@
 package modelo;
 
 import datos.EmpleadoDBHelper;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -26,7 +25,7 @@ public abstract class Empleado {
     public static String EmpleadoPorHora = "Empleado por hora";
     public static String EmpleadoFijo = "Empleado fijo";
 
-    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion,String correo, double sueldoFijo, String formaDePago) {
+    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago) {
         this.idEmpleado = idEmpleado;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
@@ -35,21 +34,18 @@ public abstract class Empleado {
         this.formaDePago = formaDePago;
         this.correoElectronico = correo;
     }
-    public static Empleado FactoryEmpleado(String tipoEmpleado)
-    {
+
+    public static Empleado FactoryEmpleado(String tipoEmpleado) {
         Empleado empleado = null;
         if (tipoEmpleado.equals(EmpleadoPorHora)) {
             empleado = new EmpleadoPorHoras();
         }
-        if (tipoEmpleado.equals(EmpleadoFijo)||tipoEmpleado.equals(EmpleadoConComision)) {
+        if (tipoEmpleado.equals(EmpleadoFijo) || tipoEmpleado.equals(EmpleadoConComision)) {
             empleado = new EmpleadoFijo();
         }
         return empleado;
     }
-    public void agregarAlSindicato(double aporteJubilacion) {
-        this.aporteJubilacion = aporteJubilacion;
-        EmpleadoDBHelper.agregarAlSindicato(idEmpleado, aporteJubilacion);
-    }
+
     public Double getSueldoFijo() {
         return this.sueldoFijo;
     }
@@ -71,5 +67,18 @@ public abstract class Empleado {
     double getAporteJubilacion() {
         return aporteJubilacion;
     }
+
     public abstract String guardar();
+
+    public String getNombre() {
+        return nombreCompleto;
+    }
+
+    public void setId(int nuevoId) {
+        this.idEmpleado = nuevoId;
+    }
+
+    public void setNombre(String nuevoNombre) {
+        this.nombreCompleto = nuevoNombre;
+    }
 }
