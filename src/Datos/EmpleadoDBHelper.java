@@ -35,7 +35,6 @@ public class EmpleadoDBHelper {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
             while (rs.next()) {
-
              //   empleados.add(venta);
             }
             SqlConnection.desconectar();
