@@ -14,12 +14,12 @@ public abstract class FormaDePago {
     private static String pagoADireccion = "Direccion";
     public static String pagoABanco = "Banco";
 
-    public abstract void enviarCheque();
-    public abstract void enviarPapeleta(PapeletaDePago papeleta);
+    public abstract void enviarCheque(String banco);
+    public abstract void enviarPapeleta(PapeletaDePago papeleta, String direccion);
 
-    public void pagar(PapeletaDePago papeleta){
-        enviarCheque();
-        enviarPapeleta(papeleta);
+    public void pagar(PapeletaDePago papeleta, String direccion, String banco){
+        enviarCheque(banco);
+        enviarPapeleta(papeleta, direccion);
     }
     public static FormaDePago factoryformaDePago(String formaDePagoString)
     {

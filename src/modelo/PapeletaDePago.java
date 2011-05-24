@@ -7,10 +7,6 @@ package modelo;
 
 import java.util.Calendar;
 
-/**
- *
- * @author HP
- */
 public class PapeletaDePago {
     public int idEmpleado;
     public Calendar fechaInicio;

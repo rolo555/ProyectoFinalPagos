@@ -83,4 +83,12 @@ public abstract class Empleado {
     public void setNombre(String nuevoNombre) {
         this.nombreCompleto = nuevoNombre;
     }
+    public String getDireccionDePago()
+    {
+        return this.direccionDePago;
+    }
+
+    public String getEmail() {
+        return this.correoElectronico;
+    }
 }

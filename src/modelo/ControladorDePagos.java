@@ -57,7 +57,7 @@ public class ControladorDePagos {
                 papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
             }
             FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
-            formaDePago.pagar(papeleta);
+            formaDePago.pagar(papeleta, empleadoAux.getDireccionDePago(),empleadoAux.getEmail());
         }
     }
     public void pagarComisiones(Calendar fechaInicio, Calendar fechaFin)
@@ -70,7 +70,7 @@ public class ControladorDePagos {
             double sueldoBruto = comisionEmpleadoAux.getComision(fechaInicio, fechaFin);
             PapeletaDePago papeleta = new PapeletaDePago(empleadoAux.getIdEmpleado(),fechaInicio,fechaFin,sueldoBruto);
             FormaDePago formaDePago = FormaDePago.factoryformaDePago(empleadoAux.getFormaDePago());
-            formaDePago.pagar(papeleta);
+            formaDePago.pagar(papeleta, empleadoAux.getDireccionDePago(),empleadoAux.getEmail());
         }
     }
 }
