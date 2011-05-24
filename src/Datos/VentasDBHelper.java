@@ -5,6 +5,7 @@
 package datos;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +19,12 @@ public class VentasDBHelper {
 
     public static ArrayList<Venta> getVentas(Calendar fechaInicio, Calendar fechaFin, int idEmpleado) {
         ArrayList<Venta> ventas = new ArrayList<Venta>();
-        String consulta = "SELECT * FROM venta WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaInicio.toString() + "') AND julianday(fecha)>=julianday('" + fechaFin.toString() + "')";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaIni = fechaInicio.getTime();
+        Date fechaF = fechaFin.getTime();
+        String fechaIniString= sdf.format(fechaIni);
+        String fechaFinString= sdf.format(fechaF);
+        String consulta = "SELECT * FROM venta WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "') AND julianday(fecha)>=julianday('" + fechaFinString + "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
@@ -40,8 +46,10 @@ public class VentasDBHelper {
 
     public static boolean guardarVenta(Venta venta) {
         boolean exito = true;
-
-        String consulta = "INSERT INTO venta (id_empleado, fecha, monto) VALUES ('" + venta.getIdEmpleado() + "','" + venta.getFecha() + "','" + venta.getMonto() + "')";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = venta.getFecha().getTime();
+        String fechaString= sdf.format(fecha);
+        String consulta = "INSERT INTO venta (id_empleado, fecha, monto) VALUES ('" + venta.getIdEmpleado() + "','" + fechaString + "','" + venta.getMonto() + "')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);

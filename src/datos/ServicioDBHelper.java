@@ -38,7 +38,10 @@ public class ServicioDBHelper {
     }
     public static ArrayList<Servicio> getServicios(Calendar fechaDelSistema, int idEmpleado) {
         ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>julianday('" + fechaDelSistema.toString() + "')";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaaux = fechaDelSistema.getTime();
+        String fechaString= sdf.format(fechaaux);
+        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>julianday('" + fechaString + "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);

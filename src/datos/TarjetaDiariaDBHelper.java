@@ -6,6 +6,7 @@
 package datos;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,10 +17,13 @@ import modelo.TarjetaDiaria;
  * @author HP
  */
 public class TarjetaDiariaDBHelper {
-     public static boolean guardarServicio(TarjetaDiaria tarjeta)
+     public static boolean guardarTarjetaDiaria(TarjetaDiaria tarjeta)
     {
         boolean exito = true;
-        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  tarjeta.getFecha() + "','" + tarjeta.getHorasTrabajadas() + "')";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = tarjeta.getFecha().getTime();
+        String fechaString= sdf.format(fecha);
+        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  fechaString + "','" + tarjeta.getHorasTrabajadas() + "')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
@@ -32,7 +36,12 @@ public class TarjetaDiariaDBHelper {
     }
     public static ArrayList<TarjetaDiaria> getTarjetasDiarias(Calendar fechaInicio, Calendar fechaFin, int idEmpleado) {
         ArrayList<TarjetaDiaria> servicios = new ArrayList<TarjetaDiaria>();
-        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaInicio.toString() + "')AND julianday(fecha)<=julianday('" + fechaFin.toString() + "')";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaIni = fechaInicio.getTime();
+        Date fechaF = fechaFin.getTime();
+        String fechaIniString= sdf.format(fechaIni);
+        String fechaFinString= sdf.format(fechaF);
+        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "')AND julianday(fecha)<=julianday('" + fechaFinString+ "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
