@@ -5,6 +5,8 @@
 
 package datos;
 
+import java.util.Calendar;
+
 /**
  *
  * @author joaco
@@ -22,6 +24,7 @@ public class RegistroEmpleadoDBHelper {
          } catch (Exception e) {
             System.out.println(e.getMessage());
             return e.getMessage();
+
         }
         return "Exito";
     }
