@@ -24,7 +24,7 @@ public class MainView extends FrameView {
     private RegistrarEmpleado empleadoPorHora;
     private MaquinaDelTiempo maquinaDelTiempo;
     private Sindicato sindicato;
-    private Servicio servicio;
+    private VistaServicio servicio;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -258,7 +258,7 @@ public class MainView extends FrameView {
     @Action
     public void abrirServicio(){
         if(servicio == null){
-            servicio = new Servicio();
+            servicio = new VistaServicio();
             jDesktopPane1.add(servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
         servicio.setVisible(true);

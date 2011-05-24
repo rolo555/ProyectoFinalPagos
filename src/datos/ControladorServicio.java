@@ -5,8 +5,10 @@
 
 package datos;
 
+import java.util.ArrayList;
 import java.util.Calendar;
-import vista.Servicio;
+import modelo.Servicio;
+import vista.VistaServicio;
 
 /**
  *
@@ -14,13 +16,11 @@ import vista.Servicio;
  */
 public class ControladorServicio {
     
-    Servicio servicio;
+    VistaServicio servicio;
 
-    public ControladorServicio(Servicio servicio) {
+    public ControladorServicio(VistaServicio servicio) {
         this.servicio = servicio;
     }
-
-
 
     public void modificar_opciones_dias() {
         int mes = servicio.getMes();
@@ -31,4 +31,18 @@ public class ControladorServicio {
         servicio.llenar_opciones_dias(diaMaximo);
     }
 
+    public void llenarEmpleadosDelSindicato() {
+        ArrayList<String> empleadosDelSindicato = EmpleadoDBHelper.getEmpleadosDelSindicato();
+        servicio.setEmpleados(empleadosDelSindicato);
+    }
+
+    public void agregarServicio() {
+        Servicio nuevoServicio;
+        int idEmpleado = servicio.getIdEmpleado();
+        String descripcion = servicio.getConcepto();
+        Double monto = servicio.getMonto();
+        Calendar fecha = servicio.getFecha();
+        nuevoServicio = new Servicio(idEmpleado, descripcion, monto, fecha);
+        ServicioDBHelper.guardarServicio(nuevoServicio);
+    }
 }

@@ -143,12 +143,18 @@
         <Property name="text" type="java.lang.String" resourceKey="jButtonAgregar.text"/>
         <Property name="name" type="java.lang.String" value="jButtonAgregar" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAgregarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonRefrescar">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="jButtonRefrescar.text"/>
         <Property name="name" type="java.lang.String" value="jButtonRefrescar" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRefrescarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancelar">
       <Properties>
