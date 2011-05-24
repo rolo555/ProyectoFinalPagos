@@ -7,18 +7,18 @@ package controlador;
 
 import datos.RegistroEmpleadoDBHelper;
 import modelo.Empleado;
-import vista.RegistrarEmpleado;
+import vista.VistaRegistrarEmpleado;
 
 /**
  *
  * @author HP
  */
 public class ControladorEmpleado {
-    RegistrarEmpleado registroEmpleado;
+    VistaRegistrarEmpleado registroEmpleado;
     //RegistroEmpleadoDBHelper registroHelper = new RegistroEmpleadoDBHelper();
 
 
-    public ControladorEmpleado(RegistrarEmpleado registroEmpleado){
+    public ControladorEmpleado(VistaRegistrarEmpleado registroEmpleado){
         this.registroEmpleado=registroEmpleado;
     }
 

@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Empleado;
-import vista.Sindicato;
+import vista.VistaAgregarAlSindicato;
 
 /**
  *
@@ -20,10 +20,10 @@ import vista.Sindicato;
  */
 public class ControladorSindicato {
 
-    Sindicato sindicato;
+    VistaAgregarAlSindicato sindicato;
     SindicatoDBHelper sindicatoDBHelper = new SindicatoDBHelper();
 
-    public ControladorSindicato(Sindicato sindicato){
+    public ControladorSindicato(VistaAgregarAlSindicato sindicato){
         this.sindicato = sindicato;
     }
 

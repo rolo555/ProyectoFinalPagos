@@ -45,6 +45,28 @@ public class EmpleadoDBHelper {
         return empleados;
     }
 
+    public static ArrayList<String> getEmpleadosDelSindicato(){
+        ArrayList<String> empleadosSinSindicato = new ArrayList<String>();
+        String consulta = "SELECT id, nombre_completo FROM empleado WHERE aporte_jubilacion != '-1'";
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            String idNombre;
+            String id;
+            String nombre;
+            while (rs.next()) {
+                id = String.valueOf(rs.getInt("id"));
+                nombre = rs.getString("nombre_completo");
+                idNombre = id + "-" + nombre;
+                empleadosSinSindicato.add(idNombre);
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return empleadosSinSindicato;
+    }
+
     public static ArrayList<String> getEmpleadosSinSindicato(){
         ArrayList<String> empleadosSinSindicato = new ArrayList<String>();
         String consulta = "SELECT id, nombre_completo FROM empleado WHERE aporte_jubilacion = '-1'";
