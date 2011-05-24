@@ -24,6 +24,7 @@ public class MainView extends FrameView {
     private RegistrarEmpleado empleadoPorHora;
     private MaquinaDelTiempo maquinaDelTiempo;
     private Sindicato sindicato;
+    private Servicio servicio;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -113,6 +114,7 @@ public class MainView extends FrameView {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -167,6 +169,11 @@ public class MainView extends FrameView {
         jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
         jMenuItem2.setName("jMenuItem2"); // NOI18N
         jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setAction(actionMap.get("abrirServicio")); // NOI18N
+        jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
+        jMenuItem3.setName("jMenuItem3"); // NOI18N
+        jMenu2.add(jMenuItem3);
 
         menuBar.add(jMenu2);
 
@@ -248,6 +255,15 @@ public class MainView extends FrameView {
         sindicato.setVisible(true);
     }
 
+    @Action
+    public void abrirServicio(){
+        if(servicio == null){
+            servicio = new Servicio();
+            jDesktopPane1.add(servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        }
+        servicio.setVisible(true);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane jDesktopPane1;
@@ -255,6 +271,7 @@ public class MainView extends FrameView {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
