@@ -52,7 +52,7 @@ public class ControladorEmpleado {
         }
     }
 
-    public static String registrarEmpleado(JTextField jTextFieldCi, JComboBox jComboBoxTipoDeEmpleado, JTextField jTextFieldNombre, JTextField jTextFieldTelefono, JTextField jTextFieldDireccion, JTextField jTextFieldEMail, JTextField jTextFieldSueldo, JComboBox jComboBoxFormaDePago) {
+    public static String registrarEmpleado(JTextField jTextFieldCi, JComboBox jComboBoxTipoDeEmpleado, JTextField jTextFieldNombre, JTextField jTextFieldTelefono, JTextField jTextFieldDireccion, JTextField jTextFieldEMail, JTextField jTextFieldSueldo, JComboBox jComboBoxFormaDePago,JTextField jTextFieldDireccionPago,JTextField jTextFieldNombreBanco) {
 
         //Empleado empleado = Empleado.FactoryEmpleado(tipoEmpleado);
 
@@ -64,7 +64,20 @@ public class ControladorEmpleado {
         String correo = jTextFieldEMail.getText();
         double sueldoFijo = Double.parseDouble(jTextFieldSueldo.getText());
         String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
-        String mensaje = RegistroEmpleadoDBHelper.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago);
+        String direccionPago=jTextFieldDireccionPago.getText();
+        String banco=jTextFieldNombreBanco.getText();
+
+        String destinoPago="";
+        if(formaDePago.equals("A direccion")){
+            destinoPago=direccionPago;
+        }
+        if(formaDePago.equals("A banco")){
+            destinoPago=banco;
+        }
+        if(formaDePago.equalsIgnoreCase("A recursos humanos")){
+            destinoPago="recursos humanos";
+        }
+        String mensaje = RegistroEmpleadoDBHelper.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago, destinoPago);
         return mensaje;
 
     }
