@@ -4,7 +4,9 @@
  */
 package modelo;
 
+import datos.ServicioDBHelper;
 import java.util.ArrayList;
+import java.util.Calendar;
 import modelo.Servicio;
 
 /**
@@ -15,9 +17,8 @@ public class Sindicato {
    
     public static ArrayList<Servicio> getServiciosUsadosPor(int idEmpleado)
     {
-        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-        //llamar a DATOS
-        return servicios;
+        Calendar fechaActual = Calendar.getInstance();
+        return ServicioDBHelper.getServicios(fechaActual, idEmpleado);
     }
     public double getCargosPorServicios(int idEmpleado)
     {
