@@ -21,11 +21,11 @@ public class PagosDBHelper {
         Calendar fechaFin = pago.fechaFin;
         double sueldoBr = pago.sueldoBruto;
         double sueldoLiq = pago.sueldoLiquido;
-        String consulta = "INSERT INTO papeleta (id_empleado,fecha_inicio,fecha_fin,sueldo_bruto,sueldo_liquido) VALUES ('"+idEmpleado+"', '"+fechaIni+"','"+fechaFin+"', '"+sueldoBr+"', , '"+sueldoLiq+"')";
+        String consulta = "INSERT INTO papeleta_de_pago (id_empleado,fecha_inicio,fecha_fin,sueldo_bruto,sueldo_liquido) VALUES ('"+idEmpleado+"', '"+fechaIni+"','"+fechaFin+"', '"+sueldoBr+"', , '"+sueldoLiq+"')";
         if (pago.tieneDatosDeSindicato()) {
             double aporte = pago.AporteJubilacion;
             double descuento = pago.descuentoPorServicios;
-            consulta = "INSERT INTO papeleta (id_empleado,fecha_inicio,fecha_fin,sueldo_bruto,sueldo_liquido, aporte_jubilacion,descuento_servicios) VALUES ('"+idEmpleado+"', '"+fechaIni+"','"+fechaFin+"', '"+sueldoBr+"', , '"+sueldoLiq+"','"+aporte+"','"+descuento+"')";
+            consulta = "INSERT INTO papeleta_de_pago (id_empleado,fecha_inicio,fecha_fin,sueldo_bruto,sueldo_liquido, aporte_jubilacion,descuento_servicios) VALUES ('"+idEmpleado+"', '"+fechaIni+"','"+fechaFin+"', '"+sueldoBr+"', , '"+sueldoLiq+"','"+aporte+"','"+descuento+"')";
         }
         try {
             SqlConnection.conectar();
@@ -37,5 +37,4 @@ public class PagosDBHelper {
             return false;
         }
     }
-
 }
