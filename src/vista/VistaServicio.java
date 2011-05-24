@@ -4,7 +4,7 @@
  */
 
 /*
- * Servicio.java
+ * VistaServicio.java
  *
  * Created on May 23, 2011, 10:05:31 PM
  */
@@ -12,19 +12,22 @@
 package vista;
 
 import datos.ControladorServicio;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
  * @author Rolo
  */
-public class Servicio extends javax.swing.JInternalFrame {
+public class VistaServicio extends javax.swing.JInternalFrame {
 
     ControladorServicio controladorServicio;
 
-    /** Creates new form Servicio */
-    public Servicio() {
+    /** Creates new form VistaServicio */
+    public VistaServicio() {
         initComponents();
         controladorServicio = new ControladorServicio(this);
+        controladorServicio.llenarEmpleadosDelSindicato();
     }
 
     /** This method is called from within the constructor to
@@ -54,7 +57,7 @@ public class Servicio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldConcepto = new javax.swing.JTextField();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(Servicio.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(VistaServicio.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
 
@@ -66,9 +69,19 @@ public class Servicio extends javax.swing.JInternalFrame {
 
         jButtonAgregar.setText(resourceMap.getString("jButtonAgregar.text")); // NOI18N
         jButtonAgregar.setName("jButtonAgregar"); // NOI18N
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         jButtonRefrescar.setText(resourceMap.getString("jButtonRefrescar.text")); // NOI18N
         jButtonRefrescar.setName("jButtonRefrescar"); // NOI18N
+        jButtonRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefrescarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText(resourceMap.getString("jButtonCancelar.text")); // NOI18N
         jButtonCancelar.setName("jButtonCancelar"); // NOI18N
@@ -199,7 +212,7 @@ public class Servicio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
                     .addComponent(jButtonRefrescar)
@@ -217,6 +230,14 @@ public class Servicio extends javax.swing.JInternalFrame {
     private void modificar_opciones_dias(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modificar_opciones_dias
         controladorServicio.modificar_opciones_dias();
     }//GEN-LAST:event_modificar_opciones_dias
+
+    private void jButtonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefrescarActionPerformed
+        controladorServicio.llenarEmpleadosDelSindicato();
+    }//GEN-LAST:event_jButtonRefrescarActionPerformed
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        controladorServicio.agregarServicio();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,6 +273,35 @@ public class Servicio extends javax.swing.JInternalFrame {
         for (int i = 1; i <= diaMaximo; i++) {
             jComboBoxDia.addItem(i);
         }
+    }
+
+    public void setEmpleados(ArrayList<String> empleadosDelSindicato) {
+        jComboBoxEmpleado.removeAllItems();
+        for (String empleado : empleadosDelSindicato) {
+            jComboBoxEmpleado.addItem(empleado);
+        }
+    }
+
+    public int getIdEmpleado() {
+        String idNombre = jComboBoxEmpleado.getSelectedItem().toString();
+        return Integer.parseInt(idNombre.split("-")[0]);
+    }
+
+    public String getConcepto() {
+        return jTextFieldConcepto.getText();
+    }
+
+    public Double getMonto() {
+        return Double.valueOf(jTextFieldMonto.getText());
+    }
+
+    public Calendar getFecha() {
+        int anio = Integer.valueOf(jComboBoxAnio.getSelectedItem().toString());
+        int mes = jComboBoxMes.getSelectedIndex();
+        int dia = Integer.valueOf(jComboBoxDia.getSelectedItem().toString());
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(anio, mes, dia);
+        return fecha;
     }
 
 }

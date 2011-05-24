@@ -6,23 +6,20 @@
 package datos;
 
 import java.sql.ResultSet;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import modelo.Servicio;
+import modelo.TarjetaDiaria;
 
 /**
  *
  * @author HP
  */
-public class ServicioDBHelper {
-
-    public static boolean guardarServicio(Servicio servicio)
+public class TarjetaDiariaDBHelper {
+     public static boolean guardarServicio(TarjetaDiaria tarjeta)
     {
         boolean exito = true;
-        Date fecha = servicio.fecha.getTime();
-        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+fecha+"')";
+        String consulta = "INSERT INTO tarjeta_diaria (id_empleado, fecha, horas_trabajadas) VALUES ('" + tarjeta.getIdEmpleado() + "','" +  tarjeta.getFecha() + "','" + tarjeta.getHorasTrabajadas() + "')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
@@ -33,9 +30,9 @@ public class ServicioDBHelper {
         }
         return exito;
     }
-    public static ArrayList<Servicio> getServicios(Calendar fechaDelSistema, int idEmpleado) {
-        ArrayList<Servicio> servicios = new ArrayList<Servicio>();
-        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>julianday('" + fechaDelSistema.toString() + "')";
+    public static ArrayList<TarjetaDiaria> getTarjetasDiarias(Calendar fechaInicio, Calendar fechaFin, int idEmpleado) {
+        ArrayList<TarjetaDiaria> servicios = new ArrayList<TarjetaDiaria>();
+        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaInicio.toString() + "')AND julianday(fecha)<=julianday('" + fechaFin.toString() + "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
@@ -44,9 +41,8 @@ public class ServicioDBHelper {
                 Date date = rs.getDate("fecha");
                 Calendar fecha = Calendar.getInstance();
                 fecha.setTime(date);
-                String descripcion= rs.getString("descripcion");
-                double monto = rs.getDouble("monto");
-                Servicio servicio = new Servicio(idEmpl, descripcion,monto, fecha);
+                int horasTrabajadas = rs.getInt("horas_trabajadas");
+                TarjetaDiaria servicio = new TarjetaDiaria(idEmpl,fecha,horasTrabajadas);
                 servicios.add(servicio);
             }
             SqlConnection.desconectar();

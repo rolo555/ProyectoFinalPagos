@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import modelo.Empleado;
-import vista.RegistrarEmpleado;
+import vista.VistaRegistrarEmpleado;
 
 /**
  *
@@ -20,11 +20,11 @@ import vista.RegistrarEmpleado;
  */
 public class ControladorEmpleado {
 
-    RegistrarEmpleado registroEmpleado;
+    VistaRegistrarEmpleado registroEmpleado;
     //RegistroEmpleadoDBHelper registroHelper = new RegistroEmpleadoDBHelper();
 
 
-    public ControladorEmpleado(RegistrarEmpleado registroEmpleado){
+    public ControladorEmpleado(VistaRegistrarEmpleado registroEmpleado){
         this.registroEmpleado=registroEmpleado;
     }
 

@@ -21,10 +21,10 @@ import javax.swing.JFrame;
  */
 public class MainView extends FrameView {
 
-    private RegistrarEmpleado empleadoPorHora;
+    private VistaRegistrarEmpleado empleadoPorHora;
     private MaquinaDelTiempo maquinaDelTiempo;
-    private Sindicato sindicato;
-    private Servicio servicio;
+    private VistaAgregarAlSindicato sindicato;
+    private VistaServicio servicio;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -231,7 +231,7 @@ public class MainView extends FrameView {
     @Action
     public void abrirEmpleadoPorHora(){
         if(empleadoPorHora == null){
-            empleadoPorHora = new RegistrarEmpleado();
+            empleadoPorHora = new VistaRegistrarEmpleado();
             jDesktopPane1.add(empleadoPorHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
         empleadoPorHora.setVisible(true);
@@ -249,7 +249,7 @@ public class MainView extends FrameView {
     @Action
     public void abrirSindicato(){
         if(sindicato == null){
-            sindicato = new Sindicato();
+            sindicato = new VistaAgregarAlSindicato();
             jDesktopPane1.add(sindicato, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
         sindicato.setVisible(true);
@@ -258,7 +258,7 @@ public class MainView extends FrameView {
     @Action
     public void abrirServicio(){
         if(servicio == null){
-            servicio = new Servicio();
+            servicio = new VistaServicio();
             jDesktopPane1.add(servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
         servicio.setVisible(true);

@@ -4,7 +4,7 @@
  */
 
 /*
- * RegistrarEmpleado.java
+ * VistaRegistrarEmpleado.java
  *
  * Created on May 21, 2011, 10:30:01 AM
  */
@@ -18,12 +18,12 @@ import org.jdesktop.application.Action;
  *
  * @author Rolo
  */
-public class RegistrarEmpleado extends javax.swing.JInternalFrame {
+public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
 
-    /** Creates new form RegistrarEmpleado */
+    /** Creates new form VistaRegistrarEmpleado */
 
     ControladorEmpleado controladorEmpleado;
-    public RegistrarEmpleado() {
+    public VistaRegistrarEmpleado() {
         initComponents();
         controladorEmpleado = new ControladorEmpleado(this);
         jPanelDireccionPago.setVisible(false);
@@ -79,7 +79,7 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
         jTextFieldCi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(RegistrarEmpleado.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(VistaRegistrarEmpleado.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
         setPreferredSize(new java.awt.Dimension(371, 400));
