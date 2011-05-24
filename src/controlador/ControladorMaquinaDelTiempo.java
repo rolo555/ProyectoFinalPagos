@@ -8,7 +8,6 @@ package controlador;
 import datos.FechaDelSistemaDBHelper;
 import java.util.Calendar;
 import javax.swing.JComboBox;
-import datos.FechaDelSistema;
 import javax.swing.JLabel;
 import vista.MaquinaDelTiempo;
 
@@ -33,7 +32,7 @@ public class ControladorMaquinaDelTiempo {
     }
 
     public void viajarEnElTiempo(int dia, int mes, int anio) {
-        fechaHelper.actualizarFecha(dia, mes, anio);
+        FechaDelSistemaDBHelper.actualizarFecha(dia, mes, anio);
     }
 
     public void llenarFechaActual() {
@@ -42,8 +41,9 @@ public class ControladorMaquinaDelTiempo {
     }
 
     public void setFecha(JLabel jLabelDia, JLabel jLabelMes, JLabel jLabelAnio,Calendar fechaActual) {
+        int mes = fechaActual.get(Calendar.MONTH);
         jLabelDia.setText(Integer.toString(fechaActual.get(Calendar.DAY_OF_MONTH)));
-        jLabelMes.setText(Integer.toString(fechaActual.get(Calendar.MONTH)));
+        jLabelMes.setText(String.valueOf(mes + 1));
         jLabelAnio.setText(Integer.toString(fechaActual.get(Calendar.YEAR)));
     }
 
