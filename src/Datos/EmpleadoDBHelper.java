@@ -88,6 +88,22 @@ public class EmpleadoDBHelper {
         }
         return empleadosSinSindicato;
     }
+    public static ArrayList<String> getEmpleadosPorHora() {
+        ArrayList<String> empleados = new ArrayList<String>();
+        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '"+Empleado.EmpleadoPorHora+"' )";
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            while (rs.next()) {
+                String empleado = rs.getString("id")+"-"+rs.getString("nombre_completo");
+                empleados.add(empleado);
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.printf(e.getMessage());
+        }
+        return empleados;
+    }
     public static boolean existeEmpleado(int idEmpleado){
         String consulta = "SELECT * FROM empleado WHERE id = '"+idEmpleado+"'";
         boolean existe = false;
