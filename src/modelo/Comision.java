@@ -5,7 +5,7 @@
 
 package modelo;
 
-import Datos.VentasDBHelper;
+import datos.VentasDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 
