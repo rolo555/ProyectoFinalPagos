@@ -21,8 +21,11 @@ import org.jdesktop.application.Action;
 public class RegistrarEmpleado extends javax.swing.JInternalFrame {
 
     /** Creates new form RegistrarEmpleado */
+
+    ControladorEmpleado controladorEmpleado;
     public RegistrarEmpleado() {
         initComponents();
+        controladorEmpleado = new ControladorEmpleado(this);
         jPanelDireccionPago.setVisible(false);
     }
 
