@@ -22,11 +22,6 @@ public class EmpleadoPorHoras extends Empleado{
         return TarjetaDiariaDBHelper.getTarjetasDiarias(inicio, Fin, idEmpleado);
     }
 
-    public void llenarTarjetaDiaria(Calendar fecha, int cantidadHoras)
-    {
-        TarjetaDiaria tarjeta = new TarjetaDiaria(this.idEmpleado, fecha, cantidadHoras);
-    }
-
     public ArrayList<TarjetaDiaria> getTarjetas(Calendar fechaInicio, Calendar fechaFin){
         ArrayList<TarjetaDiaria> tarjetasMes = new ArrayList<TarjetaDiaria>();
         for(TarjetaDiaria tarjeta: tarjetas){
