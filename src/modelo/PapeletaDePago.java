@@ -12,13 +12,13 @@ import java.util.Calendar;
  * @author HP
  */
 public class PapeletaDePago {
-    int idEmpleado;
-    Calendar fechaInicio;
-    Calendar fechaFin;
-    double sueldoBruto;
-    double sueldoLiquido;
-    double AporteJubilacion;
-    double descuentoPorServicios;
+    public int idEmpleado;
+    public Calendar fechaInicio;
+    public Calendar fechaFin;
+    public double sueldoBruto;
+    public double sueldoLiquido;
+    public double AporteJubilacion;
+    public double descuentoPorServicios;
     public PapeletaDePago( int idEmpleado, Calendar fechaIni,Calendar fechaFin, double sueldoBruto, double jubilacion, double descuento)
     {
         this.idEmpleado = idEmpleado;
@@ -36,6 +36,7 @@ public class PapeletaDePago {
         this.fechaFin = fechaFin;
         this.sueldoBruto = sueldoBruto;
         this.sueldoLiquido = sueldoBruto;
+        this.AporteJubilacion = -1;
     }
     public void enviarPorCorreo(String correo)
     {
@@ -45,8 +46,9 @@ public class PapeletaDePago {
     {
         System.out.println("Imprimiendo Papeleta");
     }
-    public void guardar()
+    public boolean tieneDatosDeSindicato()
     {
+        return (this.AporteJubilacion == -1);
     }
 
 }
