@@ -31,8 +31,8 @@ public class Venta{
         return this.monto;
     }
 
-    public String getIdEmpleado() {
-        return this.getIdEmpleado();
+    public int getIdEmpleado() {
+        return this.idEmpleado;
     }
 
     public boolean guardar(){

@@ -3,8 +3,10 @@
  * and open the template in the editor.
  */
 
-package datos;
+package controlador;
 
+import datos.EmpleadoDBHelper;
+import datos.ServicioDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 import modelo.Servicio;
@@ -16,32 +18,32 @@ import vista.VistaServicio;
  */
 public class ControladorServicio {
     
-    VistaServicio servicio;
+    VistaServicio vistaServicio;
 
     public ControladorServicio(VistaServicio servicio) {
-        this.servicio = servicio;
+        this.vistaServicio = servicio;
     }
 
     public void modificar_opciones_dias() {
-        int mes = servicio.getMes();
-        int anio = servicio.getAnio();
+        int mes = vistaServicio.getMes();
+        int anio = vistaServicio.getAnio();
         Calendar fecha = Calendar.getInstance();
         fecha.set(anio, mes, 5);
         int diaMaximo = fecha.getActualMaximum(Calendar.DAY_OF_MONTH);
-        servicio.llenar_opciones_dias(diaMaximo);
+        vistaServicio.llenar_opciones_dias(diaMaximo);
     }
 
     public void llenarEmpleadosDelSindicato() {
         ArrayList<String> empleadosDelSindicato = EmpleadoDBHelper.getEmpleadosDelSindicato();
-        servicio.setEmpleados(empleadosDelSindicato);
+        vistaServicio.setEmpleados(empleadosDelSindicato);
     }
 
     public void agregarServicio() {
         Servicio nuevoServicio;
-        int idEmpleado = servicio.getIdEmpleado();
-        String descripcion = servicio.getConcepto();
-        Double monto = servicio.getMonto();
-        Calendar fecha = servicio.getFecha();
+        int idEmpleado = vistaServicio.getIdEmpleados();
+        String descripcion = vistaServicio.getConcepto();
+        Double monto = vistaServicio.getMonto();
+        Calendar fecha = vistaServicio.getFecha();
         nuevoServicio = new Servicio(idEmpleado, descripcion, monto, fecha);
         ServicioDBHelper.guardarServicio(nuevoServicio);
     }
