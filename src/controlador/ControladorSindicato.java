@@ -22,15 +22,24 @@ public class ControladorSindicato {
 
     Sindicato sindicato;
     SindicatoDBHelper sindicatoDBHelper = new SindicatoDBHelper();
-    EmpleadoDBHelper empleadoDBHelper = new EmpleadoDBHelper();
 
     public ControladorSindicato(Sindicato sindicato){
         this.sindicato = sindicato;
     }
 
     public void llenarEmpleadosSinSindicato(){
-        ArrayList<String> empleadosSinSindicato = empleadoDBHelper.getEmpleadosSinSindicato();
+        ArrayList<String> empleadosSinSindicato = EmpleadoDBHelper.getEmpleadosSinSindicato();
         sindicato.setEmpleados(empleadosSinSindicato);
+    }
+
+    public void agregarAlSindicato(){
+        int idEmpleado = sindicato.getIdEmpleado();
+        double porcentaje = sindicato.getPorcentajeJubilacion();
+        if (EmpleadoDBHelper.setAporteJubilacion(idEmpleado, porcentaje)){
+            sindicato.mostrarMensaje("Se agrego con exito!");
+        } else {
+            sindicato.mostrarError("No se puedo agregar!");
+        }
     }
 
 }

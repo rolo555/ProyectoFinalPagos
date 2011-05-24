@@ -12,6 +12,7 @@
 package vista;
 
 import controlador.ControladorSindicato;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Empleado;
@@ -29,6 +30,16 @@ public class Sindicato extends javax.swing.JInternalFrame {
         initComponents();
         controladorSindicato = new ControladorSindicato(this);
         controladorSindicato.llenarEmpleadosSinSindicato();
+    }
+
+    public void mostrarError(String mensaje) {
+        jLabelMensaje.setForeground(Color.RED);
+        jLabelMensaje.setText(mensaje);
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        jLabelMensaje.setForeground(Color.GREEN);
+        jLabelMensaje.setText(mensaje);
     }
 
     /** This method is called from within the constructor to
@@ -49,6 +60,8 @@ public class Sindicato extends javax.swing.JInternalFrame {
         jTextFieldPorcentajeDeAporte = new javax.swing.JTextField();
         jButtonAgregar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jLabelMensaje = new javax.swing.JLabel();
+        jButtonRefescar = new javax.swing.JButton();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(Sindicato.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
@@ -118,9 +131,30 @@ public class Sindicato extends javax.swing.JInternalFrame {
 
         jButtonAgregar.setText(resourceMap.getString("jButtonAgregar.text")); // NOI18N
         jButtonAgregar.setName("jButtonAgregar"); // NOI18N
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText(resourceMap.getString("jButtonCancelar.text")); // NOI18N
         jButtonCancelar.setName("jButtonCancelar"); // NOI18N
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabelMensaje.setText(resourceMap.getString("jLabelMensaje.text")); // NOI18N
+        jLabelMensaje.setName("jLabelMensaje"); // NOI18N
+
+        jButtonRefescar.setText(resourceMap.getString("jButtonRefescar.text")); // NOI18N
+        jButtonRefescar.setName("jButtonRefescar"); // NOI18N
+        jButtonRefescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefescarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,34 +168,54 @@ public class Sindicato extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAgregar)))
+                        .addComponent(jButtonRefescar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAgregar))
+                    .addComponent(jLabelMensaje))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabelMensaje)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
+                    .addComponent(jButtonRefescar)
                     .addComponent(jButtonCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        controladorSindicato.agregarAlSindicato();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonRefescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefescarActionPerformed
+        controladorSindicato.llenarEmpleadosSinSindicato();
+    }//GEN-LAST:event_jButtonRefescarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonRefescar;
     private javax.swing.JComboBox jComboBoxEmpleados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelMensaje;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldPorcentajeDeAporte;
@@ -172,6 +226,15 @@ public class Sindicato extends javax.swing.JInternalFrame {
         for (String empleado : empleadosSinSindicato) {
             jComboBoxEmpleados.addItem(empleado);
         }
+    }
+
+    public int getIdEmpleado() {
+        String idNombre = jComboBoxEmpleados.getSelectedItem().toString();
+        return Integer.parseInt(idNombre.split("-")[0]);
+    }
+
+    public double getPorcentajeJubilacion() {
+        return Double.parseDouble(jTextFieldPorcentajeDeAporte.getText());
     }
 
 }

@@ -17,7 +17,7 @@ public class EmpleadoDBHelper {
     public static boolean setAporteJubilacion(int idEmpleado,double aporteJubilacion)
     {
        boolean exito = true;
-        String consulta = "UPDATE empleado SET aporte_jubilacion = '"+aporteJubilacion+"' WHERE id_empleado = '"+idEmpleado+"' ) ";
+        String consulta = "UPDATE empleado SET aporte_jubilacion = '"+aporteJubilacion+"' WHERE id = '"+idEmpleado+"'";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
@@ -45,7 +45,7 @@ public class EmpleadoDBHelper {
         return empleados;
     }
 
-    public ArrayList<String> getEmpleadosSinSindicato(){
+    public static ArrayList<String> getEmpleadosSinSindicato(){
         ArrayList<String> empleadosSinSindicato = new ArrayList<String>();
         String consulta = "SELECT id, nombre_completo FROM empleado WHERE aporte_jubilacion = '-1'";
         try {
