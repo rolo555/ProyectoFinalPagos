@@ -90,7 +90,7 @@ public class EmpleadoDBHelper {
     }
     public static ArrayList<String> getEmpleadosPorHora() {
         ArrayList<String> empleados = new ArrayList<String>();
-        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '"+Empleado.EmpleadoPorHora+"' )";
+        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '"+Empleado.EmpleadoPorHora+"'";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);

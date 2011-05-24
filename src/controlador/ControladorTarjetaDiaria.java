@@ -26,7 +26,7 @@ public class ControladorTarjetaDiaria {
     }
 
     public void llenarEmpleadosPorHora() {
-        ArrayList<String> empleadosPorHora = EmpleadoDBHelper.getEmpleadosDelSindicato();
+        ArrayList<String> empleadosPorHora = EmpleadoDBHelper.getEmpleadosPorHora();
         vistaTarjetaDiaria.setEmpleados(empleadosPorHora);
     }
 
