@@ -7,6 +7,7 @@ package datos;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import modelo.PapeletaDePago;
 
 /**
@@ -18,8 +19,8 @@ public class PagosDBHelper {
      public static boolean registrarPago(PapeletaDePago pago)
     {
         int idEmpleado = pago.idEmpleado;
-        Calendar fechaIni = pago.fechaInicio;
-        Calendar fechaFin = pago.fechaFin;
+        Date fechaIni = pago.fechaInicio.getTime();
+        Date fechaFin = pago.fechaFin.getTime();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String fechaIniString= sdf.format(fechaIni);
         String fechaFinString= sdf.format(fechaFin);
