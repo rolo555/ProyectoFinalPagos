@@ -6,6 +6,8 @@
 package controlador;
 
 import datos.EmpleadoDBHelper;
+import datos.TarjetaDiariaDBHelper;
+import java.beans.Visibility;
 import java.util.ArrayList;
 import java.util.Calendar;
 import modelo.TarjetaDiaria;
@@ -39,7 +41,16 @@ public class ControladorTarjetaDiaria {
 
     public void agregarTarjetaDiaria() {
         TarjetaDiaria tarjeta;
-        
+        int idEmpleado = vistaTarjetaDiaria.getIdEmpleado();
+        Calendar fecha = vistaTarjetaDiaria.getFecha();
+        int horaEntrada = vistaTarjetaDiaria.getHora();
+        int minutoEntrada = vistaTarjetaDiaria.getMinuto();
+        int horasTrabajadas = vistaTarjetaDiaria.getHorasTrabajadas();
+        if(minutoEntrada > 30){
+            horaEntrada++;
+        }
+        tarjeta = new TarjetaDiaria(idEmpleado, fecha, horasTrabajadas, horaEntrada);
+        TarjetaDiariaDBHelper.guardarTarjetaDiaria(tarjeta);
     }
 
 }

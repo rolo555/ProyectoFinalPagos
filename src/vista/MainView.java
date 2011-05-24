@@ -26,6 +26,7 @@ public class MainView extends FrameView {
     private VistaAgregarAlSindicato vistaSindicato;
     private VistaServicio vistaServicio;
     private VistaVenta vistaVenta;
+    private VistaTarjetaDiaria vistaTarjetaDiaria;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -118,6 +119,8 @@ public class MainView extends FrameView {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -189,6 +192,16 @@ public class MainView extends FrameView {
         jMenu3.add(jMenuItem4);
 
         menuBar.add(jMenu3);
+
+        jMenu4.setText(resourceMap.getString("jMenu4.text")); // NOI18N
+        jMenu4.setName("jMenu4"); // NOI18N
+
+        jMenuItem5.setAction(actionMap.get("abrirVistaTarjetaDiaria")); // NOI18N
+        jMenuItem5.setText(resourceMap.getString("jMenuItem5.text")); // NOI18N
+        jMenuItem5.setName("jMenuItem5"); // NOI18N
+        jMenu4.add(jMenuItem5);
+
+        menuBar.add(jMenu4);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
@@ -286,16 +299,27 @@ public class MainView extends FrameView {
         vistaVenta.setVisible(true);
     }
 
+    @Action
+    public void abrirVistaTarjetaDiaria(){
+        if(vistaTarjetaDiaria == null){
+            vistaTarjetaDiaria = new VistaTarjetaDiaria();
+            jDesktopPane1.add(vistaTarjetaDiaria, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        }
+        vistaTarjetaDiaria.setVisible(true);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;

@@ -12,6 +12,7 @@ package vista;
 
 import controlador.ControladorTarjetaDiaria;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -284,5 +285,31 @@ public class VistaTarjetaDiaria extends javax.swing.JInternalFrame {
         for (int i = 1; i <= diaMaximo; i++) {
             jComboBoxDia.addItem(i);
         }
+    }
+
+    public int getIdEmpleado() {
+        String idNombre = jComboBoxEmpleados.getSelectedItem().toString();
+        return Integer.parseInt(idNombre.split("-")[0]);
+    }
+
+    public Calendar getFecha() {
+        int anio = Integer.valueOf(jComboBoxAnio.getSelectedItem().toString());
+        int mes = jComboBoxMes.getSelectedIndex();
+        int dia = Integer.valueOf(jComboBoxDia.getSelectedItem().toString());
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(anio, mes, dia);
+        return fecha;
+    }
+
+    public int getHora() {
+        return jComboBoxHora.getSelectedIndex();
+    }
+
+    public int getMinuto() {
+        return jComboBoxMinuto.getSelectedIndex();
+    }
+
+    public int getHorasTrabajadas() {
+        return jComboBoxHorasTrabajadas.getSelectedIndex()+1;
     }
 }
