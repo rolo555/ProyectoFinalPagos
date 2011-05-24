@@ -22,10 +22,13 @@ import modelo.Empleado;
  */
 public class Sindicato extends javax.swing.JInternalFrame {
 
+    ControladorSindicato controladorSindicato;
+
     /** Creates new form Sindicato */
     public Sindicato() {
         initComponents();
-        llenarEmpleadosSinSindicato();
+        controladorSindicato = new ControladorSindicato(this);
+        controladorSindicato.llenarEmpleadosSinSindicato();
     }
 
     /** This method is called from within the constructor to
@@ -164,12 +167,10 @@ public class Sindicato extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldPorcentajeDeAporte;
     // End of variables declaration//GEN-END:variables
 
-    private void llenarEmpleadosSinSindicato() {
-        List<Empleado> empleadosSinSindicato;
-        empleadosSinSindicato = ControladorSindicato.getListaEmpleadosSinSindicato();
+    public void setEmpleados(ArrayList<String> empleadosSinSindicato) {
         jComboBoxEmpleados.removeAllItems();
-        for(Empleado empleado : empleadosSinSindicato){
-            jComboBoxEmpleados.addItem(String.valueOf(empleado.getIdEmpleado())+" - "+(empleado.getNombre()));
+        for (String empleado : empleadosSinSindicato) {
+            jComboBoxEmpleados.addItem(empleado);
         }
     }
 
