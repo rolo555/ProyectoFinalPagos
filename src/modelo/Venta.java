@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Datos.VentasDBHelper;
+import datos.VentasDBHelper;
 import java.util.Calendar;
 
 /**
