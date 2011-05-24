@@ -5,13 +5,23 @@
 
 package controlador;
 
+import datos.RegistroEmpleadoDBHelper;
 import modelo.Empleado;
+import vista.RegistrarEmpleado;
 
 /**
  *
  * @author HP
  */
 public class ControladorEmpleado {
+    RegistrarEmpleado registroEmpleado;
+    RegistroEmpleadoDBHelper registrohelper;
+
+
+    public ControladorEmpleado(RegistrarEmpleado registroEmpleado){
+        this.registroEmpleado=registroEmpleado;
+    }
+
     public static String registrarEmpleado(int idEmpleado,String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago)
     {
         String mensaje = "";
@@ -19,6 +29,8 @@ public class ControladorEmpleado {
         empleado.setArgumentosDeEmpleado(idEmpleado, nombreCompleto, telefono, direccion, correo, sueldoFijo, formaDePago);
         mensaje = empleado.guardar();
         return mensaje;
+
+        //registroHelper.registrarEmpleado(int idEmpleado,String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago);
     }
     public static String validarDatos(String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago)
     {
