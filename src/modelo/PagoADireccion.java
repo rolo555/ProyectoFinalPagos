@@ -9,14 +9,12 @@ package modelo;
  * @author HP
  */
 public class PagoADireccion extends FormaDePago{
-     String direccion;
-
-    @Override
-    public void enviarCheque() {
+    
+    public void enviarCheque(String direccion) {
         System.out.println("Enviando cheque a: "+ direccion);
     }
 
-    public void enviarPapeleta(PapeletaDePago papeleta) {
+    public void enviarPapeleta(PapeletaDePago papeleta, String email) {
       papeleta.imprimir();
     }
 

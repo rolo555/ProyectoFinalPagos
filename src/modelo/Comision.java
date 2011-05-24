@@ -9,10 +9,6 @@ import datos.VentasDBHelper;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- *
- * @author HP
- */
 public class Comision
 {
     private int idEmpleado;
