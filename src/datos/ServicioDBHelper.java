@@ -7,6 +7,7 @@ package datos;
 
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,8 +22,10 @@ public class ServicioDBHelper {
     public static boolean guardarServicio(Servicio servicio)
     {
         boolean exito = true;
-        String fecha = servicio.fecha.toString();
-        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+fecha+"')";
+        Date fecha=servicio.fecha.getTime();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String fechaString= sdf.format(fecha);
+        String consulta = "INSERT INTO servicio (id_empleado, descripcion, monto, fecha) VALUES ('" + servicio.idEmpleado + "','" +  servicio.descripcionServicio + "','" + servicio.getMonto() + "', '"+fechaString+"')";
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
