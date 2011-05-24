@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Datos;
+package datos;
 
-import datos.SqlConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,19 +16,19 @@ import modelo.Venta;
  */
 public class VentasDBHelper {
 
-    public static ArrayList<Venta> getVentas(Calendar fechaInicio, Calendar fechaFin) {
+    public static ArrayList<Venta> getVentas(Calendar fechaInicio, Calendar fechaFin, int idEmpleado) {
         ArrayList<Venta> ventas = new ArrayList<Venta>();
-        String consulta = "SELECT * FROM venta WHERE julianday(fecha)>=julianday('" + fechaInicio.toString() + "') AND julianday(fecha)>=julianday('" + fechaFin.toString() + "')";
+        String consulta = "SELECT * FROM venta WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaInicio.toString() + "') AND julianday(fecha)>=julianday('" + fechaFin.toString() + "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
             while (rs.next()) {
-                int idEmpleado = rs.getInt("id_empleado");
+                int idEmpl = rs.getInt("id_empleado");
                 Date date = rs.getDate("fecha");
                 Calendar fecha = Calendar.getInstance();
                 fecha.setTime(date);
                 double monto = rs.getDouble("monto");
-                Venta venta = new Venta(fecha, monto, idEmpleado);
+                Venta venta = new Venta(fecha, monto, idEmpl);
                 ventas.add(venta);
             }
             SqlConnection.desconectar();

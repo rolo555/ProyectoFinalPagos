@@ -24,7 +24,7 @@ public class Comision
     }
     public ArrayList<Venta> getVentas(Calendar fechaInicio, Calendar fechaFin)
     {
-        ArrayList<Venta> ventas = VentasDBHelper.getVentas(fechaInicio, fechaFin);
+        ArrayList<Venta> ventas = VentasDBHelper.getVentas(fechaInicio, fechaFin, idEmpleado);
         return ventas;
     }
     public double getComision(Calendar fechaInicio, Calendar fechaFin) {
