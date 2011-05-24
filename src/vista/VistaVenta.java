@@ -4,14 +4,13 @@
  */
 
 /*
- * VistaServicio.java
+ * VistaVenta.java
  *
- * Created on May 23, 2011, 10:05:31 PM
+ * Created on May 24, 2011, 1:39:18 AM
  */
-
 package vista;
 
-import datos.ControladorServicio;
+import controlador.ControladorVenta;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -19,15 +18,15 @@ import java.util.Calendar;
  *
  * @author Rolo
  */
-public class VistaServicio extends javax.swing.JInternalFrame {
+public class VistaVenta extends javax.swing.JInternalFrame {
 
-    ControladorServicio controladorServicio;
+    ControladorVenta controladorVenta;
 
-    /** Creates new form VistaServicio */
-    public VistaServicio() {
+    /** Creates new form VistaVenta */
+    public VistaVenta() {
         initComponents();
-        controladorServicio = new ControladorServicio(this);
-        controladorServicio.llenarEmpleadosDelSindicato();
+        controladorVenta = new ControladorVenta(this);
+        controladorVenta.llenarEmpleadosConComision();
     }
 
     /** This method is called from within the constructor to
@@ -40,38 +39,76 @@ public class VistaServicio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxEmpleados = new javax.swing.JComboBox();
-        jButtonAgregar = new javax.swing.JButton();
-        jButtonRefrescar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabelMensaje = new javax.swing.JLabel();
+        jComboBoxEmpleados = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
         jComboBoxDia = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
         jComboBoxMes = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jComboBoxAnio = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jTextFieldMonto = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldConcepto = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jButtonRegistrar = new javax.swing.JButton();
+        jButtonRefrescar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(VistaServicio.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(vista.MainApp.class).getContext().getResourceMap(VistaVenta.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
+        jLabelMensaje.setText(resourceMap.getString("jLabelMensaje.text")); // NOI18N
+        jLabelMensaje.setName("jLabelMensaje"); // NOI18N
+
         jComboBoxEmpleados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxEmpleados.setName("jComboBoxEmpleados"); // NOI18N
 
-        jButtonAgregar.setText(resourceMap.getString("jButtonAgregar.text")); // NOI18N
-        jButtonAgregar.setName("jButtonAgregar"); // NOI18N
-        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jComboBoxDia.setName("jComboBoxDia"); // NOI18N
+
+        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC" }));
+        jComboBoxMes.setName("jComboBoxMes"); // NOI18N
+        jComboBoxMes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxMesItemStateChanged(evt);
+            }
+        });
+
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
+        jComboBoxAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+        jComboBoxAnio.setName("jComboBoxAnio"); // NOI18N
+        jComboBoxAnio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxAnioItemStateChanged(evt);
+            }
+        });
+
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        jTextFieldMonto.setText(resourceMap.getString("jTextFieldMonto.text")); // NOI18N
+        jTextFieldMonto.setName("jTextFieldMonto"); // NOI18N
+
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
+
+        jButtonRegistrar.setText(resourceMap.getString("jButtonRegistrar.text")); // NOI18N
+        jButtonRegistrar.setName("jButtonRegistrar"); // NOI18N
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAgregarActionPerformed(evt);
+                jButtonRegistrarActionPerformed(evt);
             }
         });
 
@@ -91,104 +128,49 @@ public class VistaServicio extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-
-        jLabelMensaje.setText(resourceMap.getString("jLabelMensaje.text")); // NOI18N
-        jLabelMensaje.setName("jLabelMensaje"); // NOI18N
-
-        jComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBoxDia.setName("jComboBoxDia"); // NOI18N
-
-        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC" }));
-        jComboBoxMes.setName("jComboBoxMes"); // NOI18N
-        jComboBoxMes.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                modificar_opciones_dias(evt);
-            }
-        });
-
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
-
-        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
-
-        jComboBoxAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        jComboBoxAnio.setName("jComboBoxAnio"); // NOI18N
-        jComboBoxAnio.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                modificar_opciones_dias(evt);
-            }
-        });
-
-        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
-        jLabel6.setName("jLabel6"); // NOI18N
-
-        jTextFieldMonto.setText(resourceMap.getString("jTextFieldMonto.text")); // NOI18N
-        jTextFieldMonto.setName("jTextFieldMonto"); // NOI18N
-
-        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
-        jLabel7.setName("jLabel7"); // NOI18N
-
-        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
-
-        jTextFieldConcepto.setText(resourceMap.getString("jTextFieldConcepto.text")); // NOI18N
-        jTextFieldConcepto.setName("jTextFieldConcepto"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMensaje)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jButtonCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonRefrescar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAgregar)
+                .addComponent(jButtonRegistrar)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelMensaje)
-                .addContainerGap(213, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldConcepto))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel4)
-                        .addGap(4, 4, 4)
-                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,22 +181,18 @@ public class VistaServicio extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
                     .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
                     .addComponent(jComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addComponent(jTextFieldMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAgregar)
+                    .addComponent(jButtonRegistrar)
                     .addComponent(jButtonRefrescar)
                     .addComponent(jButtonCancelar))
                 .addContainerGap())
@@ -227,23 +205,26 @@ public class VistaServicio extends javax.swing.JInternalFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void modificar_opciones_dias(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modificar_opciones_dias
-        controladorServicio.modificar_opciones_dias();
-    }//GEN-LAST:event_modificar_opciones_dias
+    private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
+        controladorVenta.modificar_opciones_dias();
+    }//GEN-LAST:event_jComboBoxMesItemStateChanged
+
+    private void jComboBoxAnioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAnioItemStateChanged
+        controladorVenta.modificar_opciones_dias();
+    }//GEN-LAST:event_jComboBoxAnioItemStateChanged
 
     private void jButtonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefrescarActionPerformed
-        controladorServicio.llenarEmpleadosDelSindicato();
+        controladorVenta.llenarEmpleadosConComision();
     }//GEN-LAST:event_jButtonRefrescarActionPerformed
 
-    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        controladorServicio.agregarServicio();
-    }//GEN-LAST:event_jButtonAgregarActionPerformed
-
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        controladorVenta.agregarVenta();
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonRefrescar;
+    private javax.swing.JButton jButtonRegistrar;
     private javax.swing.JComboBox jComboBoxAnio;
     private javax.swing.JComboBox jComboBoxDia;
     private javax.swing.JComboBox jComboBoxEmpleados;
@@ -254,9 +235,7 @@ public class VistaServicio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelMensaje;
-    private javax.swing.JTextField jTextFieldConcepto;
     private javax.swing.JTextField jTextFieldMonto;
     // End of variables declaration//GEN-END:variables
 
@@ -275,24 +254,16 @@ public class VistaServicio extends javax.swing.JInternalFrame {
         }
     }
 
-    public void setEmpleados(ArrayList<String> empleadosDelSindicato) {
+    public void setEmpleados(ArrayList<String> empleadoConComicion) {
         jComboBoxEmpleados.removeAllItems();
-        for (String empleado : empleadosDelSindicato) {
+        for (String empleado : empleadoConComicion) {
             jComboBoxEmpleados.addItem(empleado);
         }
     }
 
-    public int getIdEmpleados() {
+    public int getIdEmpleado() {
         String idNombre = jComboBoxEmpleados.getSelectedItem().toString();
         return Integer.parseInt(idNombre.split("-")[0]);
-    }
-
-    public String getConcepto() {
-        return jTextFieldConcepto.getText();
-    }
-
-    public Double getMonto() {
-        return Double.valueOf(jTextFieldMonto.getText());
     }
 
     public Calendar getFecha() {
@@ -304,4 +275,7 @@ public class VistaServicio extends javax.swing.JInternalFrame {
         return fecha;
     }
 
+    public double getMonto() {
+        return Double.valueOf(jTextFieldMonto.getText());
+    }
 }

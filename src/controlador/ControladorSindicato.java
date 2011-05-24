@@ -20,25 +20,25 @@ import vista.VistaAgregarAlSindicato;
  */
 public class ControladorSindicato {
 
-    VistaAgregarAlSindicato sindicato;
+    VistaAgregarAlSindicato vistaSindicato;
     SindicatoDBHelper sindicatoDBHelper = new SindicatoDBHelper();
 
     public ControladorSindicato(VistaAgregarAlSindicato sindicato){
-        this.sindicato = sindicato;
+        this.vistaSindicato = sindicato;
     }
 
     public void llenarEmpleadosSinSindicato(){
         ArrayList<String> empleadosSinSindicato = EmpleadoDBHelper.getEmpleadosSinSindicato();
-        sindicato.setEmpleados(empleadosSinSindicato);
+        vistaSindicato.setEmpleados(empleadosSinSindicato);
     }
 
     public void agregarAlSindicato(){
-        int idEmpleado = sindicato.getIdEmpleado();
-        double porcentaje = sindicato.getPorcentajeJubilacion();
+        int idEmpleado = vistaSindicato.getIdEmpleado();
+        double porcentaje = vistaSindicato.getPorcentajeJubilacion();
         if (EmpleadoDBHelper.setAporteJubilacion(idEmpleado, porcentaje)){
-            sindicato.mostrarMensaje("Se agrego con exito!");
+            vistaSindicato.mostrarMensaje("Se agrego con exito!");
         } else {
-            sindicato.mostrarError("No se puedo agregar!");
+            vistaSindicato.mostrarError("No se puedo agregar!");
         }
     }
 

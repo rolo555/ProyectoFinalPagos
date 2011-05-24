@@ -23,8 +23,9 @@ public class MainView extends FrameView {
 
     private VistaRegistrarEmpleado empleadoPorHora;
     private MaquinaDelTiempo maquinaDelTiempo;
-    private VistaAgregarAlSindicato sindicato;
-    private VistaServicio servicio;
+    private VistaAgregarAlSindicato vistaSindicato;
+    private VistaServicio vistaServicio;
+    private VistaVenta vistaVenta;
 
     public MainView(SingleFrameApplication app) {
         super(app);
@@ -115,6 +116,8 @@ public class MainView extends FrameView {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -177,6 +180,16 @@ public class MainView extends FrameView {
 
         menuBar.add(jMenu2);
 
+        jMenu3.setText(resourceMap.getString("jMenu3.text")); // NOI18N
+        jMenu3.setName("jMenu3"); // NOI18N
+
+        jMenuItem4.setAction(actionMap.get("abrirVistaVenta")); // NOI18N
+        jMenuItem4.setText(resourceMap.getString("jMenuItem4.text")); // NOI18N
+        jMenuItem4.setName("jMenuItem4"); // NOI18N
+        jMenu3.add(jMenuItem4);
+
+        menuBar.add(jMenu3);
+
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
@@ -229,7 +242,7 @@ public class MainView extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
     @Action
-    public void abrirEmpleadoPorHora(){
+    public void abrirRegistrarEmpleado(){
         if(empleadoPorHora == null){
             empleadoPorHora = new VistaRegistrarEmpleado();
             jDesktopPane1.add(empleadoPorHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -247,21 +260,30 @@ public class MainView extends FrameView {
     }
 
     @Action
-    public void abrirSindicato(){
-        if(sindicato == null){
-            sindicato = new VistaAgregarAlSindicato();
-            jDesktopPane1.add(sindicato, javax.swing.JLayeredPane.DEFAULT_LAYER);
+    public void abrirVistaSindicato(){
+        if(vistaSindicato == null){
+            vistaSindicato = new VistaAgregarAlSindicato();
+            jDesktopPane1.add(vistaSindicato, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
-        sindicato.setVisible(true);
+        vistaSindicato.setVisible(true);
     }
 
     @Action
-    public void abrirServicio(){
-        if(servicio == null){
-            servicio = new VistaServicio();
-            jDesktopPane1.add(servicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+    public void abrirVistaServicio(){
+        if(vistaServicio == null){
+            vistaServicio = new VistaServicio();
+            jDesktopPane1.add(vistaServicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         }
-        servicio.setVisible(true);
+        vistaServicio.setVisible(true);
+    }
+
+    @Action
+    public void abrirVistaVenta(){
+        if(vistaVenta == null){
+            vistaVenta = new VistaVenta();
+            jDesktopPane1.add(vistaVenta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        }
+        vistaVenta.setVisible(true);
     }
 
 
@@ -269,9 +291,11 @@ public class MainView extends FrameView {
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
