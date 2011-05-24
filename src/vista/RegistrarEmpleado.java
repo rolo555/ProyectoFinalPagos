@@ -29,15 +29,13 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
         jPanelDireccionPago.setVisible(false);
     }
 
-    private void mostrarError(String mensaje) {
-        jLabelMensaje.setForeground(Color.RED);
-        jLabelMensaje.setText(mensaje);
+   /* private void mostrarError(String mensaje) {
+        ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje,Color.RED);
     }
 
     private void mostrarMensaje(String mensaje) {
-        jLabelMensaje.setForeground(Color.GREEN);
-        jLabelMensaje.setText(mensaje);
-    }
+        ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
+    }*/
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -370,58 +368,32 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mostrarDatosExtra(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrarDatosExtra
-        String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
-        if (formaDePago.equals("A banco")) {
-            jPanelNombreBanco.setVisible(true);
-            jPanelDireccionPago.setVisible(false);
-        } else if (formaDePago.equals("A direccion")) {
-            jPanelNombreBanco.setVisible(false);
-            jPanelDireccionPago.setVisible(true);
-        } else {
-            jPanelDireccionPago.setVisible(false);
-            jPanelNombreBanco.setVisible(false);
-        }
+        ControladorEmpleado.DatosExtras(jComboBoxFormaDePago,jPanelNombreBanco,jPanelDireccionPago);
     }//GEN-LAST:event_mostrarDatosExtra
 
     private void limpiarCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarCampos
-        jTextFieldDireccion.setText("");
-        jTextFieldNombre.setText("");
-        jTextFieldEMail.setText("");
-        jTextFieldNombreBanco.setText("");
-        jTextFieldSueldo.setText("");
-        jTextFieldTelefono.setText("");
+        ControladorEmpleado.limpiarCampo(jTextFieldDireccion);
+        ControladorEmpleado.limpiarCampo(jTextFieldNombre);
+        ControladorEmpleado.limpiarCampo(jTextFieldEMail);
+        ControladorEmpleado.limpiarCampo(jTextFieldNombreBanco);
+        ControladorEmpleado.limpiarCampo(jTextFieldSueldo);
+        ControladorEmpleado.limpiarCampo(jTextFieldTelefono);
     }//GEN-LAST:event_limpiarCampos
     private void ocultarVentana(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ocultarVentana
         setVisible(false);
     }//GEN-LAST:event_ocultarVentana
     private void mostrarPorcentajeComision(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrarPorcentajeComision
-        if (jComboBoxTipoDeEmpleado.getSelectedItem().toString().equals("Empleado fijo con comision")) {
-            jPanelPorcentajeComision.setVisible(true);
-
-
-        } else {
-            jPanelPorcentajeComision.setVisible(false);
-
-
-        }
+        ControladorEmpleado.mostrarPorcentajeComision(jComboBoxTipoDeEmpleado,jPanelPorcentajeComision);
     }//GEN-LAST:event_mostrarPorcentajeComision
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        String tipoEmpleado= jComboBoxTipoDeEmpleado.getSelectedItem().toString();
-        String nombreCompleto = jTextFieldNombre.getText();
-        int idEmpleado = Integer.parseInt(jTextFieldCi.getText());
-        int telefono = Integer.parseInt(jTextFieldTelefono.getText());
-        String direccion = jTextFieldDireccion.getText();
-        String correo = jTextFieldEMail.getText();
-        double sueldoFijo = Double.parseDouble(jTextFieldSueldo.getText());
-        String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
-        String mensaje = ControladorEmpleado.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago);
+        String mensaje = ControladorEmpleado.registrarEmpleado(jTextFieldCi, jComboBoxTipoDeEmpleado ,jTextFieldNombre, jTextFieldTelefono, jTextFieldDireccion, jTextFieldEMail, jTextFieldSueldo, jComboBoxFormaDePago);
         if (mensaje.equals("Exito")) {
-            mostrarMensaje(mensaje);
+            ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
         }
         else
         {
-            mostrarError(mensaje);
+            ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.RED);
         }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
