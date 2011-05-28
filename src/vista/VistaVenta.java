@@ -10,8 +10,8 @@
  */
 package vista;
 
+import controlador.ControladorFecha;
 import controlador.ControladorVenta;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -21,12 +21,13 @@ import java.util.Calendar;
 public class VistaVenta extends javax.swing.JInternalFrame {
 
     ControladorVenta controladorVenta;
+    ControladorFecha controladorFecha = new ControladorFecha();
 
     /** Creates new form VistaVenta */
     public VistaVenta() {
         initComponents();
         controladorVenta = new ControladorVenta(this);
-        controladorVenta.llenarEmpleadosConComision();
+        controladorVenta.llenarEmpleadosConComision(jComboBoxEmpleados);
     }
 
     /** This method is called from within the constructor to
@@ -206,15 +207,15 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
-        controladorVenta.modificar_opciones_dias();
+        controladorFecha.modificarOpcionDias(jComboBoxAnio,jComboBoxMes,jComboBoxDia);
     }//GEN-LAST:event_jComboBoxMesItemStateChanged
 
     private void jComboBoxAnioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAnioItemStateChanged
-        controladorVenta.modificar_opciones_dias();
+        controladorFecha.modificarOpcionDias(jComboBoxAnio,jComboBoxMes,jComboBoxDia);
     }//GEN-LAST:event_jComboBoxAnioItemStateChanged
 
     private void jButtonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefrescarActionPerformed
-        controladorVenta.llenarEmpleadosConComision();
+        controladorVenta.llenarEmpleadosConComision(jComboBoxEmpleados);
     }//GEN-LAST:event_jButtonRefrescarActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
@@ -238,28 +239,6 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelMensaje;
     private javax.swing.JTextField jTextFieldMonto;
     // End of variables declaration//GEN-END:variables
-
-    public int getMes() {
-        return jComboBoxMes.getSelectedIndex();
-    }
-
-    public int getAnio() {
-        return Integer.parseInt(jComboBoxAnio.getSelectedItem().toString());
-    }
-
-    public void llenar_opciones_dias(int diaMaximo) {
-        jComboBoxDia.removeAllItems();
-        for (int i = 1; i <= diaMaximo; i++) {
-            jComboBoxDia.addItem(i);
-        }
-    }
-
-    public void setEmpleados(ArrayList<String> empleadoConComicion) {
-        jComboBoxEmpleados.removeAllItems();
-        for (String empleado : empleadoConComicion) {
-            jComboBoxEmpleados.addItem(empleado);
-        }
-    }
 
     public int getIdEmpleado() {
         String idNombre = jComboBoxEmpleados.getSelectedItem().toString();
