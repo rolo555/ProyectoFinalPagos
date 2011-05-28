@@ -11,6 +11,7 @@
 
 package vista;
 
+import controlador.ControladorFecha;
 import controlador.ControladorMaquinaDelTiempo;
 import java.awt.Color;
 import java.util.Calendar;
@@ -23,6 +24,7 @@ import java.util.GregorianCalendar;
 public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
 
     ControladorMaquinaDelTiempo controladorMaquinaDelTiempo;
+    ControladorFecha controladorFecha = new ControladorFecha();
 
     /** Creates new form MaquinaDelTiempo */
     public MaquinaDelTiempo() {
@@ -197,7 +199,7 @@ public class MaquinaDelTiempo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificar_opciones_dias(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_modificar_opciones_dias
-        controladorMaquinaDelTiempo.modificarOpcionDias(jComboBoxAnio,jComboBoxMes,jComboBoxDia);
+        controladorFecha.modificarOpcionDias(jComboBoxAnio,jComboBoxMes,jComboBoxDia);
     }//GEN-LAST:event_modificar_opciones_dias
 
     private void jButtonCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseReleased
