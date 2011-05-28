@@ -34,7 +34,7 @@ public class ControladorServicio {
     }
 
     public void llenarEmpleadosDelSindicato() {
-        ArrayList<String> empleadosDelSindicato = EmpleadoDBHelper.getEmpleadosDelSindicato();
+        ArrayList<String> empleadosDelSindicato = EmpleadoDBHelper.getStringEmpleadosDelSindicato();
         vistaServicio.setEmpleados(empleadosDelSindicato);
     }
 

@@ -44,7 +44,7 @@ public class PapeletaDePago {
     }
     public boolean tieneDatosDeSindicato()
     {
-        return (this.AporteJubilacion == -1);
+        return (this.AporteJubilacion != -1);
     }
 
 }

@@ -16,12 +16,17 @@ import java.util.logging.Logger;
  */
 public class EmpleadoFijo extends Empleado {
 
-    private double porcentajeComision = -1;
+    public double porcentajeComision = -1;
     Comision comision;
 
     public EmpleadoFijo() {
         
     }
+
+    public EmpleadoFijo(double porcentajeComision) {
+        this.porcentajeComision = porcentajeComision;
+    }
+
     public boolean tieneComision()
     {
         return porcentajeComision!=-1;
@@ -32,24 +37,5 @@ public class EmpleadoFijo extends Empleado {
     }
     public double getSueldo(Calendar fechaInicio, Calendar fechaFin) {
         return this.sueldoFijo;
-    }
-
-    public String guardar() {
-        String consulta;
-        if (this.porcentajeComision!= -1) {
-            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision)Values ('" + this.idEmpleado + "','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','"+Empleado.EmpleadoConComision+"', '"+this.porcentajeComision+"')";
-        }else{
-            consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado)Values ('" + this.idEmpleado + "','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','"+Empleado.EmpleadoFijo+"')";
-        }
-        try {
-            SqlConnection.conectar();
-            SqlConnection.ejecutar(consulta);
-            SqlConnection.desconectar();
-            System.out.println(consulta);
-         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return e.getMessage();
-        }
-        return "Exito";
     }
 }

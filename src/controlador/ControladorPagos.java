@@ -7,6 +7,7 @@ package controlador;
 
 import datos.FechaDelSistemaDBHelper;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import modelo.Pagos;
 import modelo.FechaDelSistema;
 import vista.VistaPagos;
@@ -27,10 +28,17 @@ public class ControladorPagos {
     public void realizarPagos() {
         Calendar fechaActual = FechaDelSistemaDBHelper.getFechaDelSistema();
         fechaDelSistema = new FechaDelSistema(fechaActual);
-        Calendar fechaInicio = fechaActual;
+        Calendar fechaInicio = new GregorianCalendar();
+        fechaInicio.setTimeInMillis(fechaActual.getTimeInMillis());
         fechaInicio.add(Calendar.DATE, -5);
         if (fechaDelSistema.esViernes()) {
             Pagos.pagarEmpleadosPorHora(fechaInicio, fechaActual);
+        }
+        if ( fechaDelSistema.esUltimoDiaDelMes()){
+            Pagos.pagarFijos(fechaInicio, fechaInicio);
+        }
+        if (fechaDelSistema.esViernesPar()){
+            Pagos.pagarComisiones(fechaInicio, fechaInicio);
         }
     }
 

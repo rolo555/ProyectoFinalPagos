@@ -28,7 +28,7 @@ public class ControladorSindicato {
     }
 
     public void llenarEmpleadosSinSindicato(){
-        ArrayList<String> empleadosSinSindicato = EmpleadoDBHelper.getEmpleadosSinSindicato();
+        ArrayList<String> empleadosSinSindicato = EmpleadoDBHelper.getStringEmpleadosSinSindicato();
         vistaSindicato.setEmpleados(empleadosSinSindicato);
     }
 

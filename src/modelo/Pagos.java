@@ -17,21 +17,21 @@ import java.util.Date;
 public class Pagos {
     static Sindicato sindicato = new Sindicato();
     public static ArrayList<Empleado> getEmpleadosFijos(){
-        ArrayList<Empleado> empleadosFijos = new ArrayList<Empleado>();
-        //consultar a dal
-        return empleadosFijos;
+        return EmpleadoDBHelper.getEmpleadosFijo();
     }
 
     private static ArrayList<Empleado> getEmpleadosPorHora() {
-         ArrayList<Empleado> empleadosPorHora = new ArrayList<Empleado>();
-         return empleadosPorHora;
+         return EmpleadoDBHelper.getEmpleadosPorHora();
     }
 
     private static ArrayList<EmpleadoFijo> getEmpleadosConComision() {
-       ArrayList<EmpleadoFijo> empleadosConComision = new ArrayList<EmpleadoFijo>();
-       //consultar a dal
-       return empleadosConComision;
+       return EmpleadoDBHelper.getEmpleadosConComision();
     }
+
+    private static ArrayList<Empleado> getEmpleadosFijo() {
+       return EmpleadoDBHelper.getEmpleadosFijo();
+    }
+
     public static void pagarFijos(Calendar fechaInicio, Calendar fechaFin)
     {
         ArrayList<Empleado> empleadosFijos = getEmpleadosFijos();
@@ -39,8 +39,8 @@ public class Pagos {
     }
     public static void pagarEmpleadosPorHora(Calendar fechaInicio, Calendar fechaFin)
     {
-        ArrayList<Empleado> empleadosFijos = getEmpleadosPorHora();
-        pagarAEmpleados(fechaInicio, fechaFin, empleadosFijos);
+        ArrayList<Empleado> empleados = getEmpleadosPorHora();
+        pagarAEmpleados(fechaInicio, fechaFin, empleados);
     }
     public static void pagarAEmpleados(Calendar fechaInicio, Calendar fechaFin, ArrayList<Empleado> empleados)
     {

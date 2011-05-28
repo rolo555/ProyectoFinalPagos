@@ -35,13 +35,13 @@ public class TarjetaDiariaDBHelper {
         return exito;
     }
     public static ArrayList<TarjetaDiaria> getTarjetasDiarias(Calendar fechaInicio, Calendar fechaFin, int idEmpleado) {
-        ArrayList<TarjetaDiaria> servicios = new ArrayList<TarjetaDiaria>();
+        ArrayList<TarjetaDiaria> tarjetas = new ArrayList<TarjetaDiaria>();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         Date fechaIni = fechaInicio.getTime();
         Date fechaF = fechaFin.getTime();
         String fechaIniString= sdf.format(fechaIni);
         String fechaFinString= sdf.format(fechaF);
-        String consulta = "SELECT * FROM servicio WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "')AND julianday(fecha)<=julianday('" + fechaFinString+ "')";
+        String consulta = "SELECT * FROM tarjeta_diaria WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "')AND julianday(fecha)<=julianday('" + fechaFinString+ "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);
@@ -53,13 +53,13 @@ public class TarjetaDiariaDBHelper {
                 fecha.setTime(date);
                 int horasTrabajadas = rs.getInt("horas_trabajadas");
                 TarjetaDiaria servicio = new TarjetaDiaria(idEmpl,fecha,horasTrabajadas, horaEntrada);
-                servicios.add(servicio);
+                tarjetas.add(servicio);
             }
             SqlConnection.desconectar();
         } catch (Exception e) {
             System.out.printf(e.getMessage());
         }
-        return servicios;
+        return tarjetas;
     }
 
 }

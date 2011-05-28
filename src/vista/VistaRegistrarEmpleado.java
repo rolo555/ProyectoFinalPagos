@@ -12,6 +12,8 @@ package vista;
 
 import controlador.ControladorEmpleado;
 import java.awt.Color;
+import modelo.Empleado;
+import modelo.EmpleadoPorHoras;
 import org.jdesktop.application.Action;
 
 /**
@@ -21,22 +23,21 @@ import org.jdesktop.application.Action;
 public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
 
     /** Creates new form VistaRegistrarEmpleado */
-
     ControladorEmpleado controladorEmpleado;
+
     public VistaRegistrarEmpleado() {
         initComponents();
         controladorEmpleado = new ControladorEmpleado(this);
         jPanelDireccionPago.setVisible(false);
     }
 
-   /* private void mostrarError(String mensaje) {
-        ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje,Color.RED);
+    /* private void mostrarError(String mensaje) {
+    ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje,Color.RED);
     }
 
     private void mostrarMensaje(String mensaje) {
-        ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
+    ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
     }*/
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -358,7 +359,7 @@ public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLimpiar)
                     .addComponent(jButtonCancelar)
-                    .addComponent(jButtonRegistrar))
+                    .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
         );
 
@@ -368,7 +369,7 @@ public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mostrarDatosExtra(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrarDatosExtra
-        ControladorEmpleado.DatosExtras(jComboBoxFormaDePago,jPanelNombreBanco,jPanelDireccionPago);
+        ControladorEmpleado.DatosExtras(jComboBoxFormaDePago, jPanelNombreBanco, jPanelDireccionPago);
     }//GEN-LAST:event_mostrarDatosExtra
 
     private void limpiarCampos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarCampos
@@ -383,20 +384,12 @@ public class VistaRegistrarEmpleado extends javax.swing.JInternalFrame {
         setVisible(false);
     }//GEN-LAST:event_ocultarVentana
     private void mostrarPorcentajeComision(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_mostrarPorcentajeComision
-        ControladorEmpleado.mostrarPorcentajeComision(jComboBoxTipoDeEmpleado,jPanelPorcentajeComision);
+        ControladorEmpleado.mostrarPorcentajeComision(jComboBoxTipoDeEmpleado, jPanelPorcentajeComision);
     }//GEN-LAST:event_mostrarPorcentajeComision
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        String mensaje = ControladorEmpleado.registrarEmpleado(jTextFieldCi, jComboBoxTipoDeEmpleado ,jTextFieldNombre, jTextFieldTelefono, jTextFieldDireccion, jTextFieldEMail, jTextFieldSueldo, jComboBoxFormaDePago, jTextFieldDireccionPago, jTextFieldNombreBanco);
-        if (mensaje.equals("Exito")) {
-            ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.GREEN);
-        }
-        else
-        {
-            ControladorEmpleado.mostrarMensaje(jLabelMensaje, mensaje, Color.RED);
-        }
+        ControladorEmpleado.registrarEmpleado(jTextFieldCi, jComboBoxTipoDeEmpleado, jTextFieldNombre, jTextFieldTelefono, jTextFieldDireccion, jTextFieldEMail, jTextFieldSueldo, jComboBoxFormaDePago, jTextFieldDireccionPago, jTextFieldNombreBanco, jTextFieldPorcentajeComision);
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLimpiar;

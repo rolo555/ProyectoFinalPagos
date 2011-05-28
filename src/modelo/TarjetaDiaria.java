@@ -12,6 +12,7 @@ import java.util.Date;
  * @author HP
  */
 public class TarjetaDiaria {
+
     private int idEmpleado;
     private Calendar fecha;
     private int horaEntrada;
@@ -23,36 +24,37 @@ public class TarjetaDiaria {
         this.idEmpleado = idEmpleado;
         this.horaEntrada = hora;
     }
-    public int getHoraEntrada()
-    {
+
+    public int getHoraEntrada() {
         return this.horaEntrada;
     }
-    public int calcularHorasExtras()
-    {
+
+    public int calcularHorasExtras() {
         int horaInicio = this.horaEntrada;
-        int horaFinal = horaInicio+ this.horasTrabajadas;
-        if (horaInicio>=19) {
+        int horaFinal = horaInicio + this.horasTrabajadas;
+        if (horaInicio >= 19) {
             return horasTrabajadas;
-        }else
-        {
-            if (horaFinal > 19) {
-                return horaFinal - 19;
-            }else{
-                return 0;
-            }
+        } else if (horaFinal > 19) {
+            return horaFinal - 19;
+        } else {
+            return 0;
         }
     }
 
     public int getHorasTrabajadas() {
         return horasTrabajadas;
+
+
     }
 
-    public Calendar getFecha(){
+    public Calendar getFecha() {
         return fecha;
+
+
     }
 
     public int getIdEmpleado() {
         return idEmpleado;
-    }
 
+    }
 }

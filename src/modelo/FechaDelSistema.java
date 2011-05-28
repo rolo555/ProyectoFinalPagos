@@ -58,7 +58,7 @@ public class FechaDelSistema {
 
     public boolean esViernes() {
         int dia = fechaActual.get(Calendar.DAY_OF_WEEK);
-        return dia == 5;
+        return dia == 6;
     }
 
     public int getUltimoDiaHabilDelMes() {

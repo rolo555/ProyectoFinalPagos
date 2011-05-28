@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controlador;
 
 import datos.RegistroEmpleadoDBHelper;
@@ -23,9 +22,8 @@ public class ControladorEmpleado {
     VistaRegistrarEmpleado registroEmpleado;
     //RegistroEmpleadoDBHelper registroHelper = new RegistroEmpleadoDBHelper();
 
-
-    public ControladorEmpleado(VistaRegistrarEmpleado registroEmpleado){
-        this.registroEmpleado=registroEmpleado;
+    public ControladorEmpleado(VistaRegistrarEmpleado registroEmpleado) {
+        this.registroEmpleado = registroEmpleado;
     }
 
     public static void DatosExtras(JComboBox jComboBoxFormaDePago, JPanel jPanelNombreBanco, JPanel jPanelDireccionPago) {
@@ -46,17 +44,14 @@ public class ControladorEmpleado {
     public static void mostrarPorcentajeComision(JComboBox jComboBoxTipoDeEmpleado, JPanel jPanelPorcentajeComision) {
         if (jComboBoxTipoDeEmpleado.getSelectedItem().toString().equals("Empleado fijo con comision")) {
             jPanelPorcentajeComision.setVisible(true);
-        }
-        else {
+        } else {
             jPanelPorcentajeComision.setVisible(false);
         }
     }
 
-    public static String registrarEmpleado(JTextField jTextFieldCi, JComboBox jComboBoxTipoDeEmpleado, JTextField jTextFieldNombre, JTextField jTextFieldTelefono, JTextField jTextFieldDireccion, JTextField jTextFieldEMail, JTextField jTextFieldSueldo, JComboBox jComboBoxFormaDePago,JTextField jTextFieldDireccionPago,JTextField jTextFieldNombreBanco) {
+    public static void registrarEmpleado(JTextField jTextFieldCi, JComboBox jComboBoxTipoDeEmpleado, JTextField jTextFieldNombre, JTextField jTextFieldTelefono, JTextField jTextFieldDireccion, JTextField jTextFieldEMail, JTextField jTextFieldSueldo, JComboBox jComboBoxFormaDePago, JTextField jTextFieldDireccionPago, JTextField jTextFieldNombreBanco, JTextField jTextFieldPorcentajeComision) {
 
-        //Empleado empleado = Empleado.FactoryEmpleado(tipoEmpleado);
-
-        String tipoEmpleado= jComboBoxTipoDeEmpleado.getSelectedItem().toString();
+        String tipoEmpleado = jComboBoxTipoDeEmpleado.getSelectedItem().toString();
         String nombreCompleto = jTextFieldNombre.getText();
         int idEmpleado = Integer.parseInt(jTextFieldCi.getText());
         int telefono = Integer.parseInt(jTextFieldTelefono.getText());
@@ -64,42 +59,46 @@ public class ControladorEmpleado {
         String correo = jTextFieldEMail.getText();
         double sueldoFijo = Double.parseDouble(jTextFieldSueldo.getText());
         String formaDePago = jComboBoxFormaDePago.getSelectedItem().toString();
-        String direccionPago=jTextFieldDireccionPago.getText();
-        String banco=jTextFieldNombreBanco.getText();
+        String direccionPago = jTextFieldDireccionPago.getText();
+        String banco = jTextFieldNombreBanco.getText();
+        double porcentajeComision;
 
-        String destinoPago="";
-        if(formaDePago.equals("A direccion")){
-            destinoPago=direccionPago;
+        String destinoPago = "";
+        if (formaDePago.equals("A direccion")) {
+            destinoPago = direccionPago;
         }
-        if(formaDePago.equals("A banco")){
-            destinoPago=banco;
+        if (formaDePago.equals("A banco")) {
+            destinoPago = banco;
         }
-        if(formaDePago.equalsIgnoreCase("A recursos humanos")){
-            destinoPago="recursos humanos";
+        if (formaDePago.equalsIgnoreCase("A recursos humanos")) {
+            destinoPago = "recursos humanos";
+            Double d = 1.1;
         }
-        String mensaje = RegistroEmpleadoDBHelper.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo,sueldoFijo, formaDePago, destinoPago);
-        return mensaje;
+        if (jTextFieldPorcentajeComision.getText().equals("")) {
+            porcentajeComision = -1;
+        } else {
+            porcentajeComision = Double.parseDouble(jTextFieldPorcentajeComision.getText());
+        }
+        RegistroEmpleadoDBHelper.registrarEmpleado(idEmpleado, tipoEmpleado, nombreCompleto, telefono, direccion, correo, sueldoFijo, formaDePago, destinoPago, porcentajeComision);
 
     }
 
-
-    public static String validarDatos(String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago)
-    {
+    public static String validarDatos(String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago) {
         String mensaje = "";
-        if (!(tipoEmpleado.equals(Empleado.EmpleadoFijo)||tipoEmpleado.equals(Empleado.EmpleadoPorHora))) {
+        if (!(tipoEmpleado.equals(Empleado.EmpleadoFijo) || tipoEmpleado.equals(Empleado.EmpleadoPorHora))) {
             mensaje += "Tipo de empleado incorrecto. \n";
         }
-        if (nombreCompleto.isEmpty()){
+        if (nombreCompleto.isEmpty()) {
             mensaje += "El nombre de empleado no puede ser vacio \n";
         }
         return mensaje;
     }
 
-    public static void limpiarCampo(JTextField campo){
+    public static void limpiarCampo(JTextField campo) {
         campo.setText("");
     }
 
-    public static void mostrarMensaje(JLabel etiqueta,String mensaje,Color color){
+    public static void mostrarMensaje(JLabel etiqueta, String mensaje, Color color) {
         etiqueta.setForeground(color);
         etiqueta.setText(mensaje);
     }

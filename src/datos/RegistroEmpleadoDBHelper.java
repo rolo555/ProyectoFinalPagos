@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package datos;
 
 import java.util.Calendar;
@@ -13,20 +12,15 @@ import java.util.Calendar;
  */
 public class RegistroEmpleadoDBHelper {
 
-     public static String registrarEmpleado(int idEmpleado,String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago, String destinoPago){
-        String consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision,direccion_de_pago)Values ('" + idEmpleado + "','" + nombreCompleto + "','" + telefono + "','" + direccion + "','"+ correo + "','" + formaDePago+"','" + sueldoFijo+"', -1,'"+tipoEmpleado+"', -1,'"+destinoPago+"')";
-        //consulta = "Insert into empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision)Values ('" + this.idEmpleado + "','" + this.nombreCompleto + "','" + this.telefono + "','" + this.direccion + "','"+ this.correoElectronico + "','" + this.formaDePago+"','" + this.sueldoFijo+"', '" + this.aporteJubilacion+"','"+Empleado.EmpleadoConComision+"', '"+this.porcentajeComision+"')";
+    public static void registrarEmpleado(int idEmpleado, String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago, String destinoPago, double porcentajeComision) {
+        String consulta = "INSERT INTO empleado (id, nombre_completo, telefono, direccion, correo_electronico, tipo_de_pago, sueldo_fijo, aporte_jubilacion,tipo_empleado, porcentaje_comision,direccion_de_pago) VALUES ('" + idEmpleado + "','" + nombreCompleto + "','" + telefono + "','" + direccion + "','" + correo + "','" + formaDePago + "','" + sueldoFijo + "', '-1.0','" + tipoEmpleado + "','" + porcentajeComision + "','" + destinoPago + "')";
+        System.out.println("consulta:" + consulta);
         try {
             SqlConnection.conectar();
             SqlConnection.ejecutar(consulta);
             SqlConnection.desconectar();
-            System.out.println(consulta);
-         } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            return e.getMessage();
-
         }
-        return "Exito";
     }
-
 }

@@ -34,7 +34,7 @@ public class ControladorVenta {
     }
 
     public void llenarEmpleadosConComision() {
-        ArrayList<String> empleadoConComicion = EmpleadoDBHelper.getEmpleadosConComision();
+        ArrayList<String> empleadoConComicion = EmpleadoDBHelper.getStringEmpleadosConComision();
         vistaVenta.setEmpleados(empleadoConComicion);
     }
 

@@ -13,20 +13,20 @@ import java.util.Calendar;
  */
 public abstract class Empleado {
 
-    protected int idEmpleado;
-    protected String nombreCompleto;
-    protected int telefono;
-    protected String direccion;
-    protected double aporteJubilacion = -1;
-    protected double sueldoFijo;
-    protected String formaDePago;
-    protected String correoElectronico;
-    protected String direccionDePago;
+    public int idEmpleado;
+    public String nombreCompleto;
+    public int telefono;
+    public String direccion;
+    public double aporteJubilacion = -1;
+    public double sueldoFijo;
+    public String formaDePago;
+    public String correoElectronico;
+    public String direccionDePago;
     public static String EmpleadoConComision = "Empleado fijo con comision";
     public static String EmpleadoPorHora = "Empleado por hora";
     public static String EmpleadoFijo = "Empleado fijo";
 
-    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago, String direccionDePago) {
+    public void setArgumentosDeEmpleado(int idEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago, String direccionDePago, double aporteJubilacion) {
         this.idEmpleado = idEmpleado;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
@@ -35,15 +35,16 @@ public abstract class Empleado {
         this.formaDePago = formaDePago;
         this.correoElectronico = correo;
         this.direccionDePago = direccionDePago;
+        this.aporteJubilacion = aporteJubilacion;
     }
 
-    public static Empleado FactoryEmpleado(String tipoEmpleado) {
+    public static Empleado FactoryEmpleado(String tipoEmpleado, double porcentajeComision) {
         Empleado empleado = null;
         if (tipoEmpleado.equals(EmpleadoPorHora)) {
             empleado = new EmpleadoPorHoras();
         }
         if (tipoEmpleado.equals(EmpleadoFijo) || tipoEmpleado.equals(EmpleadoConComision)) {
-            empleado = new EmpleadoFijo();
+            empleado = new EmpleadoFijo(porcentajeComision);
         }
         return empleado;
     }
@@ -63,14 +64,12 @@ public abstract class Empleado {
     }
 
     boolean perteneceAlSindicato() {
-        return aporteJubilacion == -1;
+        return aporteJubilacion != -1;
     }
 
     double getAporteJubilacion() {
         return aporteJubilacion;
     }
-
-    public abstract String guardar();
 
     public String getNombre() {
         return nombreCompleto;
@@ -90,5 +89,9 @@ public abstract class Empleado {
 
     public String getEmail() {
         return this.correoElectronico;
+    }
+
+    public void setAporteJubilacion(double aporteJubilacion){
+        this.aporteJubilacion = aporteJubilacion;
     }
 }
