@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import datos.RegistroEmpleadoDBHelper;
@@ -15,12 +11,11 @@ import vista.VistaRegistrarEmpleado;
 
 /**
  *
- * @author HP
+ * @author Sanchez, Morales e Ismael
  */
 public class ControladorEmpleado {
 
     VistaRegistrarEmpleado registroEmpleado;
-    //RegistroEmpleadoDBHelper registroHelper = new RegistroEmpleadoDBHelper();
 
     public ControladorEmpleado(VistaRegistrarEmpleado registroEmpleado) {
         this.registroEmpleado = registroEmpleado;
@@ -83,23 +78,8 @@ public class ControladorEmpleado {
 
     }
 
-    public static String validarDatos(String tipoEmpleado, String nombreCompleto, int telefono, String direccion, String correo, double sueldoFijo, String formaDePago) {
-        String mensaje = "";
-        if (!(tipoEmpleado.equals(Empleado.EmpleadoFijo) || tipoEmpleado.equals(Empleado.EmpleadoPorHora))) {
-            mensaje += "Tipo de empleado incorrecto. \n";
-        }
-        if (nombreCompleto.isEmpty()) {
-            mensaje += "El nombre de empleado no puede ser vacio \n";
-        }
-        return mensaje;
-    }
-
     public static void limpiarCampo(JTextField campo) {
         campo.setText("");
     }
 
-    public static void mostrarMensaje(JLabel etiqueta, String mensaje, Color color) {
-        etiqueta.setForeground(color);
-        etiqueta.setText(mensaje);
-    }
 }

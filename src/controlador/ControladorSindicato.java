@@ -1,22 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controlador;
 
 import datos.EmpleadoDBHelper;
 import datos.SindicatoDBHelper;
-import datos.SqlConnection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-import modelo.Empleado;
 import vista.VistaAgregarAlSindicato;
 
 /**
  *
- * @author Rolo
+ * @author Sanchez, Morales e Ismael
  */
 public class ControladorSindicato {
 

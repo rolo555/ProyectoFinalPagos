@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controlador;
 
 import java.util.Calendar;
@@ -10,14 +5,14 @@ import javax.swing.JComboBox;
 
 /**
  *
- * @author Rolo
+ * @author Sanchesz, Morales e Ismael
  */
 public class ControladorFecha {
 
-    public void llenar_opciones_dias(JComboBox CBDia, int dias ){
+    public void llenar_opciones_dias(JComboBox CBDia, int dias) {
         CBDia.removeAllItems();
-        for(int i = 1; i <= dias; i++){
-            CBDia.addItem( i );
+        for (int i = 1; i <= dias; i++) {
+            CBDia.addItem(i);
         }
     }
 
@@ -30,4 +25,12 @@ public class ControladorFecha {
         llenar_opciones_dias(jComboBoxDia, diaMaximo);
     }
 
+    public Calendar getFecha(JComboBox jComboBoxAnio, JComboBox jComboBoxMes, JComboBox jComboBoxDia) {
+        int anio = Integer.valueOf(jComboBoxAnio.getSelectedItem().toString());
+        int mes = jComboBoxMes.getSelectedIndex();
+        int dia = Integer.valueOf(jComboBoxDia.getSelectedItem().toString());
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(anio, mes, dia);
+        return fecha;
+    }
 }

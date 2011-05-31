@@ -1,51 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
-import datos.SqlConnection;
-import java.sql.ResultSet;
+
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import sun.security.jca.GetInstance;
 
 /**
  *
- * @author HP
+ * @author Sanchez, Moreales e Ismael
  */
 public class FechaDelSistema {
 
-    public static Calendar getFechaDelSistema() {
-        String consulta = "SELECT * FROM fecha_del_sistema WHERE id='1'";
-        Calendar fecha = Calendar.getInstance();
-        try {
-            SqlConnection.conectar();
-            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
-            if (rs.next()) {
-                fecha.set(rs.getInt("anio"), rs.getInt("mes"), rs.getInt("dia"));
-            } else {
-                fecha.set(2000, 1, 1);
-                SqlConnection.ejecutar("INSERT INTO fecha_del_sistema (id, dia, mes, anio) VALUES ('1','1','1','2000')");
-            }
-            SqlConnection.desconectar();
-        } catch (Exception e) {
-            System.out.printf(e.getMessage());
-        }
-        return fecha;
-    }
-
-    public static void actualizarFecha(int dia, int mes, int anio) {
-        String consulta = "UPDATE fecha_del_sistema SET dia='"+ dia +"', mes='"+ mes +"', anio='"+anio+"' WHERE id='1'";
-        try {
-            SqlConnection.conectar();
-            SqlConnection.ejecutar(consulta);
-            SqlConnection.desconectar();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
     private Calendar fechaActual;
 
     public FechaDelSistema(Calendar fecha) {
@@ -62,7 +26,8 @@ public class FechaDelSistema {
     }
 
     public int getUltimoDiaHabilDelMes() {
-        Calendar cal = fechaActual;//revisar metodo raro
+        Calendar cal = Calendar.getInstance();
+        cal.set(fechaActual.get(Calendar.YEAR), fechaActual.get(Calendar.MONTH), fechaActual.get(Calendar.DAY_OF_MONTH));
         int ultimoDia = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
         cal.set(Calendar.DAY_OF_MONTH, ultimoDia);
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
@@ -84,14 +49,12 @@ public class FechaDelSistema {
     public boolean esViernesPar() {
         int contadorViernes = 0;
         Calendar cal = Calendar.getInstance();
-        cal.set(fechaActual.get(Calendar.YEAR), 0, 1);//revisar metodo raro
-        int ultimoDia = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        cal.set(Calendar.DAY_OF_MONTH, ultimoDia);
+        cal.set(fechaActual.get(Calendar.YEAR), 0, 1);
         for (int i = 0; cal.before(fechaActual); i++) {
-            cal.add(Calendar.DAY_OF_MONTH, 1);
-            if (cal.get(Calendar.DAY_OF_WEEK) == 5) {
+            if (cal.get(Calendar.DAY_OF_WEEK) == 6) {
                 contadorViernes++;
             }
+            cal.add(Calendar.DATE, 1);
         }
         return contadorViernes % 2 == 0;
     }

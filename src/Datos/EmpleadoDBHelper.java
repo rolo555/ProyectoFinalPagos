@@ -1,12 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package datos;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Calendar;
 import modelo.Empleado;
 import modelo.EmpleadoFijo;
 import modelo.EmpleadoPorHoras;
@@ -142,7 +137,7 @@ public class EmpleadoDBHelper {
 
     public static ArrayList<Empleado> getEmpleadosFijo() {
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '" + Empleado.EmpleadoFijo + "'";
+        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '" + Empleado.EmpleadoFijo + "' OR tipo_empleado = '" + Empleado.EmpleadoConComision + "'";
         EmpleadoFijo empleado;
         try {
             SqlConnection.conectar();
@@ -159,7 +154,7 @@ public class EmpleadoDBHelper {
         return empleados;
     }
 
-    public static ArrayList<EmpleadoFijo> getEmpleadosConComision() {
+    public static ArrayList<EmpleadoFijo> getEmpleadosFijosConComision() {
         ArrayList<EmpleadoFijo> empleados = new ArrayList<EmpleadoFijo>();
         String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '" + Empleado.EmpleadoConComision + "'";
         EmpleadoFijo empleado;
@@ -176,6 +171,41 @@ public class EmpleadoDBHelper {
             System.out.printf(e.getMessage());
         }
         return empleados;
+    }
+
+    public static ArrayList<Empleado> getEmpleadosConComision() {
+        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+        String consulta = "SELECT * FROM empleado WHERE tipo_empleado = '" + Empleado.EmpleadoConComision + "'";
+        EmpleadoFijo empleado;
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            while (rs.next()) {
+                empleado = new EmpleadoFijo(rs.getDouble("porcentaje_comision"));
+                empleado.setArgumentosDeEmpleado(rs.getInt("id"), rs.getString("nombre_completo"), rs.getInt("telefono"), rs.getString("direccion"), rs.getString("correo_electronico"), rs.getDouble("sueldo_fijo"), rs.getString("tipo_de_pago"), rs.getString("direccion_de_pago"), rs.getDouble("aporte_jubilacion"));
+                empleados.add(empleado);
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.printf(e.getMessage());
+        }
+        return empleados;
+    }
+
+    public static String getNombreEmpleado(int idEmpleado) {
+        String nombre = "";
+        String consulta = "SELECT nombre_completo FROM empleado WHERE id = '"+ idEmpleado +"'";
+        try {
+            SqlConnection.conectar();
+            ResultSet rs = SqlConnection.ejecutarResultado(consulta);
+            while (rs.next()) {
+                nombre = rs.getString("nombre_completo");
+            }
+            SqlConnection.desconectar();
+        } catch (Exception e) {
+            System.out.printf(e.getMessage());
+        }
+        return nombre;
     }
 
     public void guardarEmpleadoFijo(EmpleadoFijo empleado) {

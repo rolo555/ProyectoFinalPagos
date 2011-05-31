@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controlador;
 
 import datos.FechaDelSistemaDBHelper;
@@ -13,7 +8,7 @@ import vista.MaquinaDelTiempo;
 
 /**
  *
- * @author Rolo
+ * @author Sanchez, Morales e Ismael
  */
 public class ControladorMaquinaDelTiempo {
 
@@ -29,7 +24,7 @@ public class ControladorMaquinaDelTiempo {
     }
 
     public void llenarFechaActual() {
-        Calendar fecha = fechaHelper.getFechaDelSistema();
+        Calendar fecha = FechaDelSistemaDBHelper.getFechaDelSistema();
         maquinaDelTiempo.setFechaActual(fecha);
     }
 

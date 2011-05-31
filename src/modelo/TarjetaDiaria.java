@@ -32,10 +32,10 @@ public class TarjetaDiaria {
     public int calcularHorasExtras() {
         int horaInicio = this.horaEntrada;
         int horaFinal = horaInicio + this.horasTrabajadas;
-        if (horaInicio >= 19) {
+        if (horaInicio >= 16) {
             return horasTrabajadas;
-        } else if (horaFinal > 19) {
-            return horaFinal - 19;
+        } else if (horaFinal > 16) {
+            return horaFinal - 16;
         } else {
             return 0;
         }

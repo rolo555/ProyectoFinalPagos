@@ -24,7 +24,7 @@ public class VentasDBHelper {
         Date fechaF = fechaFin.getTime();
         String fechaIniString= sdf.format(fechaIni);
         String fechaFinString= sdf.format(fechaF);
-        String consulta = "SELECT * FROM venta WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "') AND julianday(fecha)>=julianday('" + fechaFinString + "')";
+        String consulta = "SELECT * FROM venta WHERE id_empleado = '"+idEmpleado+"' AND julianday(fecha)>=julianday('" + fechaIniString + "') AND julianday(fecha)<=julianday('" + fechaFinString + "')";
         try {
             SqlConnection.conectar();
             ResultSet rs = SqlConnection.ejecutarResultado(consulta);

@@ -1,20 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controlador;
 
 import datos.FechaDelSistemaDBHelper;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import modelo.Pagos;
 import modelo.FechaDelSistema;
+import modelo.PapeletaDePago;
 import vista.VistaPagos;
 
 /**
  *
- * @author Rolo
+ * @author Sanchez, Morales e Ismael
  */
 public class ControladorPagos {
 
@@ -25,21 +22,37 @@ public class ControladorPagos {
         this.vistaPagos = vistaPagos;
     }
 
-    public void realizarPagos() {
+    public ArrayList<PapeletaDePago> realizarPagos() {
+        ArrayList<PapeletaDePago> papeletasDePago = new ArrayList<PapeletaDePago>();
         Calendar fechaActual = FechaDelSistemaDBHelper.getFechaDelSistema();
         fechaDelSistema = new FechaDelSistema(fechaActual);
         Calendar fechaInicio = new GregorianCalendar();
         fechaInicio.setTimeInMillis(fechaActual.getTimeInMillis());
-        fechaInicio.add(Calendar.DATE, -5);
         if (fechaDelSistema.esViernes()) {
-            Pagos.pagarEmpleadosPorHora(fechaInicio, fechaActual);
+            ArrayList<PapeletaDePago> papeletasEmpleadosPorHora;
+            fechaInicio.add(Calendar.DATE, -5);
+            papeletasEmpleadosPorHora = Pagos.pagarEmpleadosPorHora(fechaInicio, fechaActual);
+            fechaInicio.add(Calendar.DATE, +5);
+            juntarPapeletas(papeletasDePago, papeletasEmpleadosPorHora);
         }
-        if ( fechaDelSistema.esUltimoDiaDelMes()){
-            Pagos.pagarFijos(fechaInicio, fechaInicio);
+        if (fechaDelSistema.esUltimoDiaDelMes()) {
+            ArrayList<PapeletaDePago> papeletasEmpleadosFijos;
+            papeletasEmpleadosFijos = Pagos.pagarFijos(fechaInicio, fechaActual);
+            juntarPapeletas(papeletasDePago, papeletasEmpleadosFijos);
         }
-        if (fechaDelSistema.esViernesPar()){
-            Pagos.pagarComisiones(fechaInicio, fechaInicio);
+        if (fechaDelSistema.esViernesPar()) {
+            ArrayList<PapeletaDePago> papeletasEmpleadosConComision;
+            fechaInicio.add(Calendar.DATE, -11);
+            papeletasEmpleadosConComision = Pagos.pagarComisiones(fechaInicio, fechaActual);
+            fechaInicio.add(Calendar.DATE, +11);
+            juntarPapeletas(papeletasDePago, papeletasEmpleadosConComision);
         }
+        return papeletasDePago;
     }
 
+    private void juntarPapeletas(ArrayList<PapeletaDePago> papeletasDePago, ArrayList<PapeletaDePago> papeletasEmpleadosPorHora) {
+        for(int i = 0; i < papeletasEmpleadosPorHora.size(); i++){
+            papeletasDePago.add(papeletasEmpleadosPorHora.get(i));
+        }
+    }
 }

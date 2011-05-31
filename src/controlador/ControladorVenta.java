@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controlador;
 
 import datos.EmpleadoDBHelper;
@@ -15,7 +10,7 @@ import vista.VistaVenta;
 
 /**
  *
- * @author Rolo
+ * @author Sanchez, Morales e Ismael
  */
 public class ControladorVenta {
 
